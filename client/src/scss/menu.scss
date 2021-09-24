@@ -1,0 +1,37 @@
+.menu {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: 99%;
+    padding: 10px;
+    margin: auto;
+    margin-top: 10px;
+    box-shadow: #d1c9c9 0 0 12px;
+    font-family: 'Times New Roman', Times, serif;
+
+    .logo {
+        width: 100px;
+    }
+
+    .items {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 19px;
+        
+        a {
+            color: black;
+            padding-bottom: 5px;
+            margin: 0 20px;
+
+            &:hover {
+                box-shadow: inset 0px -2px rgb(20, 183, 189);
+            }
+        }
+
+        .active {
+            box-shadow: inset 0px -2px rgb(20, 183, 189);
+        }
+    }
+}

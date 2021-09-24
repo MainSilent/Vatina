@@ -1,0 +1,190 @@
+.login-register {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    & > div {
+        font-family: arial;
+        background-color: white;
+        box-shadow: #d1c9c9 0 0 8px;
+        border-radius: 0.25vw;
+    }
+
+    .nav {
+        display: flex;
+        gap: 5px;
+        font-size: 17px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        box-shadow: none;
+        background-color: #f5f5f5;
+
+        a {
+            padding: 15px 30px;
+            border-radius: 0.25vw;
+            color: black;
+            background-color: white;
+            box-shadow: #d1c9c9 0 0 8px;
+        }
+
+        .active {
+            box-shadow: none;
+            background-color: #f5f5f5;
+        }
+    }
+
+    .form {
+        width: 300px;
+        padding: 20px;
+
+        .login.password {
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+
+        .register.username, .register.password, .re_password, #is_brand {
+            margin-top: 10px;
+        }
+
+        .register.re_password {
+            margin-bottom: 8px;
+        }
+
+        .forget_password {
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 15px;
+
+            &:hover {
+                opacity: 0.7;
+            }
+
+            &.active {
+                text-decoration: none;
+                cursor: default;
+                color: green;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .error {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-align: center;
+            color: red;
+            margin-bottom: 10px;
+            line-height: 20px;
+        }
+
+        .success {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-align: center;
+            color: green;
+            margin-bottom: 10px;
+        }
+    }
+
+    .submit {
+        font-size: 17px;
+        padding: 15px 30px;
+        margin-top: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            box-shadow: #d1c9c9 5px 5px 8px;
+        }
+
+        &.error {
+            box-shadow: red 0 0 8px;
+        }
+
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 2px solid black;
+            border-radius: 50%;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            transition: all 0.5s ease-in;
+            animation: submit_spin 1s linear infinite;
+        }
+
+        @keyframes submit_spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    }
+
+    // ------------------------------- Input -------------------------------
+    .form__group {
+        position: relative;
+        padding: 15px 0 0;
+        width: 100%;
+    }
+
+    .form__field {
+        font-family: inherit;
+        width: 100%;
+        border: 0;
+        border-bottom: 2px solid #9b9b9b;
+        outline: 0;
+        font-size: 1rem;
+        padding: 7px 5px;
+        background: transparent;
+        transition: border-color 0.2s;
+
+        &::placeholder {
+            color: transparent;
+        }
+
+        &:placeholder-shown ~ .form__label {
+            font-size: 0.9rem;
+            cursor: text;
+            top: 20px;
+        }
+
+        &.invalid {
+            border-color: red;
+        }
+    }
+
+    .form__label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 0.9rem;
+        color: #9b9b9b;
+    }
+
+    .form__field:focus {
+        ~ .form__label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            color: black;   
+        }
+        padding-bottom: 6px;  
+        border-width: 3px;
+        border-color: black;
+    }
+
+    .form__field{
+        &:required,&:invalid { box-shadow:none; }
+    }
+}
