@@ -16,11 +16,24 @@
         border: 1px solid red;
     }
 
-    .host-container, .product-container {
- 
-    }
+    .host-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
 
-    .video-container, .comments-container {
+        h1 {
+            font-size: 22px;
+            margin-left: 10px;
 
+            span {
+                font-size: 15px;
+            }
+        }
+
+        img {
+            border-radius: 50%;
+            height: 50%;
+            margin-left: 20px;
+        }
     }
 }
