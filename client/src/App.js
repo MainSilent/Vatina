@@ -14,20 +14,18 @@ import Footer from './Footer'
 class App extends Component {
     render() {
         return (
-            <div>
-                <Router>
-                    <Menu />
-                    <Switch>
-                        <Route path={["/login", "/register", "/resetpassword"]} component={Account} sensitive/>
-                        <Route path="/shows" component={Shows}/>
-                        <Route path='/' exact>
-                            <Home />
-                            <Footer />
-                        </Route>
-                        <Route path='*' component={NotFound}/>
-                    </Switch>
-                </Router>
-            </div>
+            <Router>
+                <Menu />
+                <Switch>
+                    <Route path={["/login", "/register", "/resetpassword"]} component={Account} sensitive/>
+                    <Route path="/shows" component={Shows}/>
+                    <Route path='/' exact>
+                        <Home />
+                        <Footer />
+                    </Route>
+                    <Route path='*' component={NotFound}/>
+                </Switch>
+            </Router>
         )
     }
 }
