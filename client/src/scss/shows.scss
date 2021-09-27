@@ -1,5 +1,6 @@
 .shows {
     display: flex;
+    flex-direction: column;
     width: 99%;
     margin: auto;
     transition: 0.2s;
@@ -72,6 +73,10 @@
     .disable {
         cursor: progress;
         opacity: 0.5;
+    }
+
+    .list {
+        
     }
 }
 
