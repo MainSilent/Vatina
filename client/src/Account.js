@@ -52,8 +52,6 @@ class Account extends Component {
         const username = document.getElementById('username')
         const password = document.getElementById('password')
         const re_password = document.getElementById('re_password')
-        const is_brand = document.getElementById('is_brand')
-        const brand_name = document.getElementById('brand_name')
 
         if (this.state.path === '/login') {
             if (!email.value || !password.value) {
@@ -66,13 +64,12 @@ class Account extends Component {
             }
         }
         else if (this.state.path === '/register') {
-            if (!email.value || !username.value || !password.value || !re_password.value || (!is_brand && !brand_name.value)) {
+            if (!email.value || !username.value || !password.value || !re_password.value) {
                 this.setInvalid('Empty Registration Data', [
                     !email.value && email,
                     !username.value && username,
                     !password.value && password,
-                    !re_password.value && re_password,
-                    !is_brand && !brand_name.value && brand_name
+                    !re_password.value && re_password
                 ])
                 return
             }

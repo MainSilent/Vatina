@@ -5,12 +5,10 @@ class Register extends Component {
         super()
         this.state = {
             isForget: false,
-            is_brand: false,
             email: '',
             username: '',
             password: '',
-            re_password: '',
-            brand_name: ''
+            re_password: ''
         }
         this.handleInputChange = this.handleInputChange.bind(this)
     }
@@ -56,27 +54,6 @@ class Register extends Component {
                         </label>
                     </div>
                 )}
-
-                {!this.state.is_brand ? <span>is Brand? <input type="checkbox" onChange={this.handleInputChange} name="is_brand" id="is_brand" disabled={this.props.isSubmit}/></span> :
-                <div className={"form__group field register brand_name"}>
-                    <input
-                        type="text"
-                        className="form__field"
-                        placeholder="Brand Name"
-                        name="brand_name"
-                        id="brand_name"
-                        disabled={this.props.isSubmit}
-                        onChange={this.handleInputChange}
-                        value={this.state.brand_name}
-                        required
-                    />
-                    <label
-                        htmlFor="brand_name"
-                        className="form__label"
-                    >
-                        Brand Name
-                    </label>
-                </div>}
             </>
         )
     }
