@@ -1,1 +1,1 @@
-client/public/static/sample/* filter=lfs diff=lfs merge=lfs -text
+public/static/sample/* filter=lfs diff=lfs merge=lfs -text
