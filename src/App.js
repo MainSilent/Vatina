@@ -6,6 +6,7 @@ import {
 } from "react-router-dom"
 import Menu from './Menu'
 import Home from './Home'
+import Show from './Show'
 import Shows from './Shows'
 import Account from './Account'
 import NotFound from './404'
@@ -19,6 +20,7 @@ class App extends Component {
                 <Switch>
                     <Route path={["/login", "/register", "/resetpassword"]} component={Account} sensitive/>
                     <Route path="/shows" component={Shows}/>
+                    <Route path="/show" component={Show}/>
                     <Route path='/' exact>
                         <Home />
                         <Footer />

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/fontawesome-free-solid'
 
@@ -6,11 +7,11 @@ class List extends Component {
     render() {
         return (
             <div className="list">
-                {Array(5).fill().map((a, i) => 
-                    <div className="show" key={i}>
-                        <img className="thumbnail" alt={`Sample ${i}`} src={`./static/sample/sample${++i}.png`}/>
+                {Array(5).fill().map((_, i) => 
+                    <div className="show" key={i} onClick={() => this.props.history.push(`/show/sample${i}`)}>
+                        <img className="thumbnail" alt={`Sample ${++i}`} src={`./static/sample/sample${i}.png`}/>
                         <div className="details">
-                            <h2 className="title">Sample {++i}</h2>
+                            <h2 className="title">Sample {i}</h2>
                             <p className="views">{Math.floor(Math.random() * (100 - 10) + 10)} <FontAwesomeIcon icon={faEye} /></p>
                         </div>
                     </div>
@@ -20,4 +21,4 @@ class List extends Component {
     }
 }
 
-export default List
+export default withRouter(List)
