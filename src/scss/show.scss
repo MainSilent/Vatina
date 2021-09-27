@@ -1,12 +1,26 @@
 .show-container {
     flex: 1;
     display: grid;
-    width: 85%;
+    grid-template-columns: 350px 1fr;
+    grid-template-rows: 100px 1fr;
+    width: 90%;
     height: 100%;
-    margin: 70px auto;
+    margin: 50px auto;
     transition: 0.2s;
     font-family: arial;
     background: white;
     border-radius: 0.2vw;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
+    div {
+        border: 1px solid red;
+    }
+
+    .host-container, .product-container {
+ 
+    }
+
+    .video-container, .comments-container {
+
+    }
 }
