@@ -1,6 +1,7 @@
 .shows {
+    flex: 1;
     display: flex;
-    flex-direction: column;border: 1px solid red;
+    flex-direction: column;
     width: 99%;
     height: 100%;
     margin: 0 auto;
@@ -77,8 +78,8 @@
     }
 
     .list {
-        height: 100%;
-        border: solid 1px red;
+        flex: 1;
+        margin-bottom: 10px;
     }
 }
 
