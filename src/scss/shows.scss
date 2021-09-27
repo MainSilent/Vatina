@@ -109,10 +109,22 @@
                 width: 100%;
                 bottom: 0;
                 color: white;
-                background-color: #00000088;
+                background-color: #00000099;
 
                 .title {
+                    position: absolute;
+                    font-size: 18px;
+                    font-family: arial;
                     bottom: 0;
+                    margin-bottom: 8px;
+                    margin-left: 4px;
+                }
+
+                .views {
+                    position: absolute;
+                    right: 0;
+                    margin-top: 8px;
+                    margin-right: 4px;
                 }
             }
         }
