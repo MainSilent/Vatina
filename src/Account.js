@@ -85,16 +85,16 @@ class Account extends Component {
                 this.setInvalid('Password does not match', [re_password])
                 return
             }
-            if (!this.isStrongPassword(password))
-                return
+            // if (!this.isStrongPassword(password))
+            //     return
         }
         else if (this.state.path === '/resetpassword') {
             if (password.value !== re_password.value) {
                 this.setInvalid('Password does not match', [re_password])
                 return
             }
-            if (!this.isStrongPassword(password))
-                return
+            // if (!this.isStrongPassword(password))
+            //     return
         }
 
         setTimeout(() => {
