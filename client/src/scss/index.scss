@@ -9,12 +9,18 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-img {
-    pointer-events: none;
-    user-select: none;
+html, body{
+    min-height: 100%;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 body {
-    overflow-x: hidden;
     background-color: #f5f5f5;
+}
+
+img {
+    pointer-events: none;
+    user-select: none;
 }
