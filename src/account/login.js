@@ -12,9 +12,15 @@ class Login extends Component {
         this.handleInputChange = this.handleInputChange.bind(this)
     }
     forgetPassword(event) {
-        this.setState({
-            isForget: true,
-        })
+        const email = document.querySelector('#email')
+        if (!email.value)
+            email.classList.add('invalid')
+        else {
+            email.classList.remove('invalid')
+            this.setState({
+                isForget: true,
+            })
+        }
     }
     handleInputChange(event) {
         const target = event.target

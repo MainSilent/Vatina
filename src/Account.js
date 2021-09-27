@@ -96,6 +96,13 @@ class Account extends Component {
             if (!this.isStrongPassword(password))
                 return
         }
+
+        setTimeout(() => {
+            this.setState({
+                isSubmit: false,
+                success: "This website is only a template!"
+            })
+        }, 1000)
     }
     setInvalid(msg, elems) {
         this.setState({ 
