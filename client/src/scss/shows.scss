@@ -79,7 +79,17 @@
 
     .list {
         flex: 1;
-        margin-bottom: 10px;
+        display: grid;
+        grid-template-columns: repeat(17, minmax(128px, 1fr));
+        grid-auto-flow: row;
+        margin: 10px 0;
+        overflow-x: auto;
+
+        .show {
+            height: 128px;
+            width: 128px;
+            background-color: grey;
+        }
     }
 }
 
