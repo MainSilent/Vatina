@@ -11,11 +11,11 @@ class List extends Component {
     render() {
         return (
             <div className="list">
-                {Array(100).fill().map((a, i) => 
+                {Array(50).fill().map((a, i) => 
                     <div className="show">
-                        <img className="thumbnail"/>
+                        <img className="thumbnail" src={`./static/sample/sample${Math.floor(Math.random() * (6 - 1) + 1)}.png`}/>
                         <div className="details">
-                            
+                            <h2 className="title">Sample {i}</h2>
                         </div>
                     </div>
                 )}

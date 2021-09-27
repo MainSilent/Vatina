@@ -79,19 +79,42 @@
     .list {
         flex: 1;
         display: grid;
-        grid-gap: 20px;
-        grid-template-columns: repeat(17, minmax(150px, 1fr));
+        grid-gap: 25px;
+        grid-template-columns: repeat(13, minmax(170px, 1fr));
         grid-auto-flow: row;
         margin: 10px 0;
         overflow-x: auto;
 
         .show {
-            height: 150px;
-            width: 150px;
+            position: relative;
+            height: 170px;
+            width: 170px;
             border-radius: .2vw;
             border: 1px solid rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: .3s;
 
-            
+            &:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+            }
+
+            .thumbnail {
+                width: 100%;
+                height: 100%;
+            }
+
+            .details {
+                position: absolute;
+                height: 45%;
+                width: 100%;
+                bottom: 0;
+                color: white;
+                background-color: #00000088;
+
+                .title {
+                    bottom: 0;
+                }
+            }
         }
     }
 }
