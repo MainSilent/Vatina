@@ -13,7 +13,10 @@ class List extends Component {
             <div className="list">
                 {Array(100).fill().map((a, i) => 
                     <div className="show">
-                        <h1>Cool {i}</h1>
+                        <img className="thumbnail"/>
+                        <div className="details">
+                            
+                        </div>
                     </div>
                 )}
             </div>

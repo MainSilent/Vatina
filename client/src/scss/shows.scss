@@ -79,7 +79,7 @@
     .list {
         flex: 1;
         display: grid;
-        grid-gap: 10px;
+        grid-gap: 20px;
         grid-template-columns: repeat(17, minmax(150px, 1fr));
         grid-auto-flow: row;
         margin: 10px 0;
@@ -88,7 +88,10 @@
         .show {
             height: 150px;
             width: 150px;
-            background-color: grey;
+            border-radius: .2vw;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+
+            
         }
     }
 }
