@@ -89,10 +89,10 @@
             position: relative;
             height: 170px;
             width: 170px;
-            border-radius: .2vw;
-            border: 1px solid rgba(0, 0, 0, 0.5);
             cursor: pointer;
             transition: .3s;
+            border-radius: .25vw;
+            background: transparent;
 
             &:hover {
                 box-shadow: 0 0 10px rgba(0, 0, 0, 1);
@@ -101,6 +101,7 @@
             .thumbnail {
                 width: 100%;
                 height: 100%;
+                border-radius: .25vw;
             }
 
             .details {
@@ -110,6 +111,8 @@
                 bottom: 0;
                 color: white;
                 background-color: #00000099;
+                border-bottom-left-radius: .25vw;
+                border-bottom-right-radius: .25vw;
 
                 .title {
                     position: absolute;
