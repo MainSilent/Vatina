@@ -107,7 +107,8 @@ class Account extends Component {
     setInvalid(msg, elems) {
         this.setState({ 
             isSubmit: false,
-            error: msg
+            error: msg,
+            success: ""
         })
         document.querySelector('.submit').classList.add('error')
         elems.forEach(elem => elem && elem.classList.add('invalid'))
