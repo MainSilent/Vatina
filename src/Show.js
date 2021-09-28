@@ -40,7 +40,11 @@ class Show extends Component {
 
                 <div className="comments-container">
                     <div className="comments">
-                        
+                        {Array(100).fill().map((_, i) => 
+                            <div className="comment">
+                                sdf
+                            </div>
+                        )}
                     </div>
 
                     <div className="add">
