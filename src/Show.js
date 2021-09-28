@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faVolumeUp } from '@fortawesome/fontawesome-free-solid'
 import { faVolumeMute, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import randomComments from './random_comments.json'
 import './scss/show.scss'
 
 class Show extends Component {
@@ -19,6 +20,23 @@ class Show extends Component {
         this.setState({ 
             comment: event.target.value
         })
+    }
+    generateComment() {
+        setTimeout(() => {
+            this.setState({
+                comments: [
+                    ...this.state.comments,
+                    {
+                        name: this.state.users[Math.floor(Math.random() * 5)],
+                        text: randomComments[Math.floor(Math.random() * 10)]
+                    }
+                ]
+            })
+            this.generateComment()
+        }, Math.floor(Math.random() * (7 - 1) + 1) * 1000)
+    }
+    componentDidMount() {
+        this.generateComment()
     }
     render() {
         return (
@@ -41,12 +59,12 @@ class Show extends Component {
 
                 <div className="comments-container">
                     <div className="comments">
-                        {Array(100).fill().map((_, i) => 
-                            <div className="comment">
-                                <img alt="profile" src="/static/images/profile/Oliver.jpeg"/>
+                        {this.state.comments.map((c, i) => 
+                            <div className="comment" key={i}>
+                                <img alt="profile" src={`/static/images/profile/${c.name}.jpeg`}/>
                                 <div>
-                                    <p className="name">Oliver</p>
-                                    <p className="text">The text generation API is backed by a large-scale unsupervised language model that can generate paragraphs of text</p>
+                                    <p className="name">{c.name}</p>
+                                    <p className="text">{c.text}</p>
                                 </div>
                             </div>
                         )}
