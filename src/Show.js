@@ -75,10 +75,10 @@ class Show extends Component {
                     <div className="comments">
                         {this.state.comments.map((c, i) => 
                             <div className="comment" key={i}>
-                                <img alt="profile" src={`/static/images/profile/${c.name}.${c.name != 'Guest' ? 'jpeg' : 'png'}`}/>
+                                <img alt="profile" src={`/static/images/profile/${c.name}.${c.name !== 'Guest' ? 'jpeg' : 'png'}`}/>
                                 <div>
                                     <p className="name">{c.name}</p>
-                                    <p className="text" style={c.name == 'Guest' ? {wordBreak: 'break-all'} : {}}>{c.text}</p>
+                                    <p className="text" style={c.name === 'Guest' ? {wordBreak: 'break-all'} : {}}>{c.text}</p>
                                 </div>
                             </div>
                         )}
@@ -90,7 +90,7 @@ class Show extends Component {
                             name="comment" 
                             value={this.state.comment} 
                             onChange={this.handleComment} 
-                            onKeyUp={e => e.key == 'Enter' && this.addComment()}
+                            onKeyUp={e => e.key === 'Enter' && this.addComment()}
                             placeholder="Add a Comment..."
                         />
                         <span className="send" onClick={this.addComment}><FontAwesomeIcon icon={faPaperPlane} /></span>
