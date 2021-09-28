@@ -9,6 +9,7 @@ class Show extends Component {
         super()
         this.state = {
             muted: true,
+            users: ['Benjamin', 'James', 'Oliver', 'Patricia', 'Charles'],
             comment: '',
             comments: []
         }
