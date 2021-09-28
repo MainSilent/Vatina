@@ -10,7 +10,6 @@ class Show extends Component {
                 <div className="host-container">
                     <img src='/static/images/adobe.jpg' alt="adobe logo"/>
                     <h1>Adobe<span><br/>Live show started: 8:53 AM</span></h1>
-                    {/* <p className="views">27 <FontAwesomeIcon icon={faEye} /></p> */}
                 </div>
 
                 <div className="line"/>
@@ -23,8 +22,15 @@ class Show extends Component {
                     <p className="price"></p>
                 </div>
 
-                <div className="video-container"></div>
-                <div className="comments-container"></div>
+                <div className="comments-container">
+                    <p className="views">27 <FontAwesomeIcon icon={faEye} /></p>
+                </div>
+
+                <div className="video-container">
+                    <video autoPlay muted>
+                        <source src="/static/AdobeXD.webm" type="video/webm" width="100%" height="auto"/>
+                    </video>
+                </div>
             </div>
         )
     }
