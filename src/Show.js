@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faVolumeUp } from '@fortawesome/fontawesome-free-solid'
-import { faVolumeMute } from '@fortawesome/free-solid-svg-icons'
+import { faVolumeMute, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import './scss/show.scss'
 
 class Show extends Component {
     constructor() {
         super()
         this.state = {
-            muted: true
+            muted: true,
+            comment: '',
+            comments: []
         }
+        this.handleComment = this.handleComment.bind(this)
+    }
+    handleComment(event) {
+        this.setState({ 
+            comment: event.target.value
+        })
     }
     render() {
         return (
@@ -31,8 +39,14 @@ class Show extends Component {
                 </div>
 
                 <div className="comments-container">
-                    <div className="comments"></div>
-                    <div className="add"></div>
+                    <div className="comments">
+                        
+                    </div>
+
+                    <div className="add">
+                        <input type="text" name="comment" value={this.state.comment} onChange={this.handleComment} placeholder="Add a Comment..."/>
+                        <span className="send"><FontAwesomeIcon icon={faPaperPlane} /></span>
+                    </div>
                 </div>
 
                 <div className="video-container">

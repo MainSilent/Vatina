@@ -132,5 +132,43 @@
     }
 
     .comments-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        margin: 10px;
+
+        .add {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            input {
+                border: none;
+                height: 30px;
+                width: 100%;
+                font-size: 18px;
+
+                &::placeholder{
+                    font-size: 18px;
+                }
+
+                &:focus{
+                    outline: none;
+                }
+            }
+
+            .send {
+                padding: 10px;
+                font-size: 18px;
+                transition: .2s;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.3);
+                }
+            }
+        }
     }
 }
