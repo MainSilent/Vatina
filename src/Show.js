@@ -9,6 +9,7 @@ class Show extends Component {
     constructor() {
         super()
         this.state = {
+            scrolled: false,
             muted: true,
             users: ['Benjamin', 'James', 'Oliver', 'Patricia', 'Charles'],
             comment: '',
@@ -17,9 +18,29 @@ class Show extends Component {
         this.handleComment = this.handleComment.bind(this)
         this.addComment = this.addComment.bind(this)
     }
+    scrollBottom() {
+        if (this.state.scrolled) return
+        const elem = document.querySelector('.comments')
+        elem.scrollTop = elem.scrollHeight - elem.clientHeight
+    }
     handleComment(event) {
+        const comments = document.querySelector('.comments')
+
         this.setState({ 
             comment: event.target.value
+        })
+
+        comments.addEventListener('scroll', event => {
+            if (comments.clientHeight + comments.scrollTop >= comments.scrollHeight)
+                this.state.scrolled &&
+                    this.setState({
+                        scrolled: false
+                    })  
+            else
+                !this.state.scrolled &&
+                    this.setState({
+                        scrolled: true
+                    })
         })
     }
     addComment() {
@@ -33,7 +54,7 @@ class Show extends Component {
                     }
                 ],
                 comment: ''
-            })
+            }, this.scrollBottom)
     }
     generateComment() {
         setTimeout(() => {
@@ -45,7 +66,7 @@ class Show extends Component {
                         text: randomComments[Math.floor(Math.random() * 10)]
                     }
                 ]
-            })
+            }, this.scrollBottom)
             this.generateComment()
         }, Math.floor(Math.random() * (7 - 1) + 1) * 1000)
     }
