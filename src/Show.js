@@ -20,7 +20,7 @@ class Show extends Component {
                         <p className="name"><img src='/static/images/AdobeXD.png' alt="Adobe XD" /> Adobe XD Beta</p>
                         <p className="description">This product is a vector-based user experience design tool for web apps and mobile apps.</p>
                     </div>
-                    <p className="price">299$</p>
+                    <p className="price"></p>
                 </div>
 
                 <div className="video-container"></div>
