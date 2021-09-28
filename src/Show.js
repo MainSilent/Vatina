@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye } from '@fortawesome/fontawesome-free-solid'
+import { faEye, faVolumeUp } from '@fortawesome/fontawesome-free-solid'
+import { faVolumeMute } from '@fortawesome/free-solid-svg-icons'
 import './scss/show.scss'
 
 class Show extends Component {
+    constructor() {
+        super()
+        this.state = {
+            muted: true
+        }
+    }
     render() {
         return (
             <div className="show-container">
@@ -27,9 +34,10 @@ class Show extends Component {
                 </div>
 
                 <div className="video-container">
-                    <video autoPlay muted>
+                    <video autoPlay muted={this.state.muted}>
                         <source src="/static/AdobeXD.webm" type="video/webm" width="100%" height="auto"/>
                     </video>
+                    <span className="mute" onClick={() => this.setState({ muted: !this.state.muted })}><FontAwesomeIcon icon={this.state.muted ? faVolumeMute : faVolumeUp} /></span>
                 </div>
             </div>
         )
