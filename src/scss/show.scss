@@ -12,10 +12,6 @@
     border-radius: 0.2vw;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 
-    & > div {
-        //border: 1px solid red;
-    }
-
     .line {
         background-color: rgba(0, 0, 0, 0.3);
         width: 1px;
@@ -24,6 +20,7 @@
     }
 
     .host-container {
+        position: relative;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -41,6 +38,12 @@
             border-radius: 50%;
             height: 50%;
             margin-left: 20px;
+        }
+
+        .views {
+            position: absolute;
+            top: 28px;
+            right: 10px;
         }
     }
 
