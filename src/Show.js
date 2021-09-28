@@ -77,7 +77,7 @@ class Show extends Component {
                                 <img alt="profile" src={`/static/images/profile/${c.name}.${c.name != 'Guest' ? 'jpeg' : 'png'}`}/>
                                 <div>
                                     <p className="name">{c.name}</p>
-                                    <p className="text">{c.text}</p>
+                                    <p className="text" style={c.name == 'Guest' ? {wordBreak: 'break-all'} : {}}>{c.text}</p>
                                 </div>
                             </div>
                         )}
