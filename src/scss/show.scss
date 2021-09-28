@@ -167,12 +167,33 @@
             }
 
             .comment {
-                width: 100%;
-                margin: 5px 10px;
+                display: flex;
+                align-items: flex-start;
+                width: calc(100% - 10px);
+                margin: 8px 5px;
 
                 img {
                     border-radius: 50%;
                     width: 36px;
+                    height: 36px;
+                    margin-right: 8px;
+                }
+
+                div {
+                    .name {
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+    
+                    .text {
+                        margin-top: 4px;
+                        font-size: 16px;
+                        padding: 8px;
+                        border-radius: 0.22vw;
+                        line-height: 1.3em;
+                        color: white;
+                        background-color: rgba(0, 0, 0, 0.6);
+                    }
                 }
             }
         }

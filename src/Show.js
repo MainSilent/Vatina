@@ -40,17 +40,14 @@ class Show extends Component {
 
                 <div className="comments-container">
                     <div className="comments">
-                        {Array(100).fill().map((_, i) => <>
-                            <div className="comment">
-                                <img alt="profile" src="/static/images/profile/James.jpeg"/>
-                                <p className="name">James</p>
-                                <p className="comment">TalkToTransformer.com offers an accessible version of OpenAI’s text generator</p>
-                            </div>
+                        {Array(100).fill().map((_, i) => 
                             <div className="comment">
                                 <img alt="profile" src="/static/images/profile/Oliver.jpeg"/>
-                                <p className="name">Oliver</p>
-                                <p className="comment">The text generation API is backed by a large-scale unsupervised language model that can generate paragraphs of text</p>
-                            </div></>
+                                <div>
+                                    <p className="name">Oliver</p>
+                                    <p className="text">The text generation API is backed by a large-scale unsupervised language model that can generate paragraphs of text</p>
+                                </div>
+                            </div>
                         )}
                     </div>
 
