@@ -23,16 +23,17 @@ class Show extends Component {
         })
     }
     addComment() {
-        this.setState({
-            comments: [
-                ...this.state.comments,
-                {
-                    name: "Guest",
-                    text: this.state.comment
-                }
-            ],
-            comment: ''
-        })
+        this.state.comment && 
+            this.setState({
+                comments: [
+                    ...this.state.comments,
+                    {
+                        name: "Guest",
+                        text: this.state.comment
+                    }
+                ],
+                comment: ''
+            })
     }
     generateComment() {
         setTimeout(() => {
