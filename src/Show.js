@@ -42,7 +42,9 @@ class Show extends Component {
                     <div className="comments">
                         {Array(100).fill().map((_, i) => 
                             <div className="comment">
-                                sdf
+                                <img alt="profile"/>
+                                <p className="name"></p>
+                                <p className="comment"></p>
                             </div>
                         )}
                     </div>
