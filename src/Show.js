@@ -15,10 +15,23 @@ class Show extends Component {
             comments: []
         }
         this.handleComment = this.handleComment.bind(this)
+        this.addComment = this.addComment.bind(this)
     }
     handleComment(event) {
         this.setState({ 
             comment: event.target.value
+        })
+    }
+    addComment() {
+        this.setState({
+            comments: [
+                ...this.state.comments,
+                {
+                    name: "Guest",
+                    text: this.state.comment
+                }
+            ],
+            comment: ''
         })
     }
     generateComment() {
@@ -54,14 +67,14 @@ class Show extends Component {
                         <p className="name"><img src='/static/images/AdobeXD.png' alt="Adobe XD" /> Adobe XD Beta</p>
                         <p className="description">This product is a vector-based user experience design tool for web apps and mobile apps.</p>
                     </div>
-                    <p className="price"></p>
+                    <p className="price" onClick={() => window.open('https://www.adobe.com/products/xd.html', '_blank')}></p>
                 </div>
 
                 <div className="comments-container">
                     <div className="comments">
                         {this.state.comments.map((c, i) => 
                             <div className="comment" key={i}>
-                                <img alt="profile" src={`/static/images/profile/${c.name}.jpeg`}/>
+                                <img alt="profile" src={`/static/images/profile/${c.name}.${c.name != 'Guest' ? 'jpeg' : 'png'}`}/>
                                 <div>
                                     <p className="name">{c.name}</p>
                                     <p className="text">{c.text}</p>
@@ -71,8 +84,15 @@ class Show extends Component {
                     </div>
 
                     <div className="add">
-                        <input type="text" name="comment" value={this.state.comment} onChange={this.handleComment} placeholder="Add a Comment..."/>
-                        <span className="send"><FontAwesomeIcon icon={faPaperPlane} /></span>
+                        <input 
+                            type="text" 
+                            name="comment" 
+                            value={this.state.comment} 
+                            onChange={this.handleComment} 
+                            onKeyUp={e => e.key == 'Enter' && this.addComment()}
+                            placeholder="Add a Comment..."
+                        />
+                        <span className="send" onClick={this.addComment}><FontAwesomeIcon icon={faPaperPlane} /></span>
                     </div>
                 </div>
 
