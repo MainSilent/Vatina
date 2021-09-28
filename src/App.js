@@ -19,8 +19,8 @@ class App extends Component {
                 <Menu />
                 <Switch>
                     <Route path={["/login", "/register", "/resetpassword"]} component={Account} sensitive/>
-                    <Route path="/shows" component={Shows}/>
-                    <Route path="/show" component={Show}/>
+                    <Route path="/shows" component={Shows} exact/>
+                    <Route path="/show" component={Show} exact/>
                     <Route path='/' exact>
                         <Home />
                         <Footer />

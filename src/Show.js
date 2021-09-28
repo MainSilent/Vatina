@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
-import { withRouter } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/fontawesome-free-solid'
 import './scss/show.scss'
 
 class Show extends Component {
     render() {
-        const i = window.location.pathname.split('').pop()
-        if (isNaN(i) || i < 1 || i > 5)
-            this.props.history.push("/404")
-
         return (
             <div className="show-container">
                 <div className="host-container">
@@ -26,4 +21,4 @@ class Show extends Component {
     }
 }
 
-export default withRouter(Show)
+export default Show
