@@ -265,5 +265,116 @@ input:checked+.slider:before {
 }
 
 @media screen and (max-width: 800px) {
-
+    .shows {
+        .topbar {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            border-bottom: 1px solid #00000077;
+    
+            .sort {
+                display: flex;
+    
+                & > * {
+                    display: flex;
+                    align-items: flex-end;
+                    cursor: pointer;
+                    padding: 3px 6px; 
+                    font-size: 13px;
+                    border-top-left-radius: 0.3vw;
+                    border-top-right-radius: 0.3vw;
+                }
+            }
+    
+            .search {
+                input {
+                    font-size: 13px;
+                }
+    
+                button {
+                    padding: 3px 6px;  
+                    margin-right: 3px;
+                    font-size: 13px;
+                    border-top-left-radius: 0.3vw;
+                    border-top-right-radius: 0.3vw;
+                }
+            }
+        }
+    
+        .disable {
+            cursor: progress;
+            opacity: 0.5;
+        }
+    
+        .list {
+            flex: 1;
+            display: grid;
+            grid-gap: 0;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            margin: 15px 0 10px;
+    
+            .show {
+                position: relative;
+                height: 140px;
+                width: 140px;
+                cursor: pointer;
+                transition: .3s;
+                border-radius: .3vw;
+                background: transparent;
+    
+                &:hover {
+                    box-shadow: 0 0 6px rgba(0, 0, 0, 1);
+                }
+    
+                .thumbnail {
+                    border-radius: .3vw;
+                }
+    
+                .details {
+                    position: absolute;
+                    height: 45%;
+                    width: 100%;
+                    bottom: 0;
+                    color: white;
+                    background-color: #00000099;
+                    border-bottom-left-radius: .3vw;
+                    border-bottom-right-radius: .3vw;
+    
+                    .title {
+                        position: absolute;
+                        font-size: 14px;
+                        font-family: arial;
+                        bottom: 0;
+                        margin-bottom: 6px;
+                        margin-left: 4px;
+                    }
+    
+                    .views {
+                        position: absolute;
+                        right: 0;
+                        font-size: 14px;
+                        margin-top: 4px;
+                        margin-right: 4px;
+                    }
+                }
+            }
+        }
+    }
+    
+    // ---------------------------- Slider --------------------------------
+    .switch {
+        width: 27px;
+        height: 12px;
+        margin-left: 2px;
+    }
+    
+    .slider:before {
+        height: 9px;
+        width: 9px;
+        left: 2px;
+        bottom: 1.7px;
+    }
+    
+    input:checked+.slider:before {
+        transform: translateX(14px);
+    }
 }
