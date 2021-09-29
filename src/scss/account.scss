@@ -1,13 +1,12 @@
 .login-register {
-    position: absolute;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: auto;
+    margin-bottom: 80px;
     width: 350px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
     & > div {
         font-family: arial;
