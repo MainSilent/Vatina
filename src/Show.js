@@ -19,7 +19,6 @@ class Show extends Component {
         this.addComment = this.addComment.bind(this)
     }
     scrollBottom() {
-        if (this.state.scrolled) return
         const elem = document.querySelector('.comments')
         elem.scrollTop = elem.scrollHeight - elem.clientHeight
     }
@@ -51,7 +50,7 @@ class Show extends Component {
                         text: randomComments[Math.floor(Math.random() * 10)]
                     }
                 ]
-            }, this.scrollBottom)
+            }, () => !this.state.scrolled && this.scrollBottom())
             this.generateComment()
         }, Math.floor(Math.random() * (7 - 1) + 1) * 1000)
     }
