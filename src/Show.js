@@ -24,23 +24,8 @@ class Show extends Component {
         elem.scrollTop = elem.scrollHeight - elem.clientHeight
     }
     handleComment(event) {
-        const comments = document.querySelector('.comments')
-
         this.setState({ 
             comment: event.target.value
-        })
-
-        comments.addEventListener('scroll', event => {
-            if (comments.clientHeight + comments.scrollTop >= comments.scrollHeight)
-                this.state.scrolled &&
-                    this.setState({
-                        scrolled: false
-                    })  
-            else
-                !this.state.scrolled &&
-                    this.setState({
-                        scrolled: true
-                    })
         })
     }
     addComment() {
@@ -71,6 +56,20 @@ class Show extends Component {
         }, Math.floor(Math.random() * (7 - 1) + 1) * 1000)
     }
     componentDidMount() {
+        const comments = document.querySelector('.comments')
+        comments.addEventListener('scroll', event => {
+            if (comments.clientHeight + comments.scrollTop >= comments.scrollHeight)
+                this.state.scrolled &&
+                    this.setState({
+                        scrolled: false
+                    })  
+            else
+                !this.state.scrolled &&
+                    this.setState({
+                        scrolled: true
+                    })
+        })
+
         this.generateComment()
     }
     render() {
