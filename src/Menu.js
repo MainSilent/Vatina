@@ -21,9 +21,6 @@ class Menu extends Component {
             isOpen: false
         }
     }
-    componentDidMount() {
-
-    }
     render() {
         return (
             <div className='menu'>
