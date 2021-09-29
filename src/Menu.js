@@ -33,7 +33,7 @@ class Menu extends Component {
                 </ul>
                 {/* Responsive Menu */}
                 <span className="hamberger-btn" onClick={() => this.setState({ isOpen: !this.state.isOpen })}>&#9776;</span>
-                <ul className="items-rwd" style={this.state.isOpen ? { width: '300px' } : {}}>
+                <ul className="items-rwd" style={this.state.isOpen ? { width: document.body.clientWidth >= 350 ? '300px' : '100%'} : {}}>
                     <span className="closebtn" onClick={() => this.setState({ isOpen: false })}>&times;</span>
                     <Items />
                 </ul>
