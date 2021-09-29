@@ -279,24 +279,28 @@ input:checked+.slider:before {
                     display: flex;
                     align-items: flex-end;
                     cursor: pointer;
-                    padding: 3px 6px; 
+                    padding: 6px 6px; 
                     font-size: 13px;
-                    border-top-left-radius: 0.3vw;
-                    border-top-right-radius: 0.3vw;
+                    border-top-left-radius: .7vw;
+                    border-top-right-radius: .7vw;
                 }
             }
     
             .search {
+                width: 100%;
+                margin-bottom: 20px;
+                border-bottom: 1px solid #00000077;
+
                 input {
-                    font-size: 13px;
+                    font-size: 16px;
                 }
     
                 button {
                     padding: 3px 6px;  
                     margin-right: 3px;
-                    font-size: 13px;
-                    border-top-left-radius: 0.3vw;
-                    border-top-right-radius: 0.3vw;
+                    font-size: 16px;
+                    border-top-left-radius: .7vw;
+                    border-top-right-radius: .7vw;
                 }
             }
         }
@@ -310,24 +314,25 @@ input:checked+.slider:before {
             flex: 1;
             display: grid;
             grid-gap: 0;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             margin: 15px 0 10px;
     
             .show {
                 position: relative;
-                height: 140px;
-                width: 140px;
+                height: 100px;
+                width: 100px;
                 cursor: pointer;
                 transition: .3s;
-                border-radius: .3vw;
+                border-radius: .7vw;
                 background: transparent;
+                margin-bottom: 0 !important;
     
                 &:hover {
                     box-shadow: 0 0 6px rgba(0, 0, 0, 1);
                 }
     
                 .thumbnail {
-                    border-radius: .3vw;
+                    border-radius: .7vw;
                 }
     
                 .details {
@@ -337,8 +342,8 @@ input:checked+.slider:before {
                     bottom: 0;
                     color: white;
                     background-color: #00000099;
-                    border-bottom-left-radius: .3vw;
-                    border-bottom-right-radius: .3vw;
+                    border-bottom-left-radius: .7vw;
+                    border-bottom-right-radius: .7vw;
     
                     .title {
                         position: absolute;
@@ -359,23 +364,5 @@ input:checked+.slider:before {
                 }
             }
         }
-    }
-    
-    // ---------------------------- Slider --------------------------------
-    .switch {
-        width: 27px;
-        height: 12px;
-        margin-left: 2px;
-    }
-    
-    .slider:before {
-        height: 9px;
-        width: 9px;
-        left: 2px;
-        bottom: 1.7px;
-    }
-    
-    input:checked+.slider:before {
-        transform: translateX(14px);
     }
 }
