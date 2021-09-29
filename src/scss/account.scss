@@ -384,5 +384,17 @@
 
 // -------------------------------------------- 800px --------------------------------------------
 @media screen and (max-width: 800px) {
+    .login-register {
+        margin-bottom: 40px;
 
+        & > div {
+            border-radius: 0.8vw;
+        }
+    
+        .nav {
+            a {
+                border-radius: 0.8vw;
+            }
+        }
+    }
 }
