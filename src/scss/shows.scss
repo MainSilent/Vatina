@@ -277,6 +277,14 @@ input:checked+.slider:before {
             border-bottom: 1px solid #00000077;
     
             .sort {
+                width: 100%;
+                overflow-x: auto;
+                scrollbar-width: none;
+                
+                &::-webkit-scrollbar { 
+                    display: none;
+                }
+
                 & > * {
                     padding: 6px 6px; 
                     font-size: 13px;
