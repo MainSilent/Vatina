@@ -267,6 +267,8 @@ input:checked+.slider:before {
 
 @media screen and (max-width: 800px) {
     .shows {
+        width: 100%;
+
         .topbar {
             flex-direction: column-reverse;
             align-items: flex-start;
@@ -309,6 +311,7 @@ input:checked+.slider:before {
                 height: 100px;
                 width: 100px;
                 border-radius: .7vw;
+                margin-bottom: 15px;
     
                 .thumbnail {
                     border-radius: .7vw;
