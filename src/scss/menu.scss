@@ -34,6 +34,18 @@
             box-shadow: inset 0px -2px rgb(20, 183, 189);
         }
     }
+
+    .hamberger-btn {
+        font-size: 24px;
+        margin-right: 0;
+        margin-left: auto;
+        cursor: default;
+        display: none;
+    }
+
+    .items-rwd {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 1100px) {
@@ -66,9 +78,57 @@
         padding: 8px;
         margin-top: 10px;
         box-shadow: #d1c9c9 0 0 12px;
+        font-family: "Lato", sans-serif;
+
     
         .logo {
-            width: 60px;
+            width: 65px;
+        }
+
+        .items {
+            display: none;
+        }
+
+        .hamberger-btn, .items-rwd {
+            display: block;
+        }
+
+        .items-rwd {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding-top: 60px;
+
+            a {
+                text-align: center;
+                text-decoration: none;
+                padding: 10px 0;
+                font-size: 22px;
+                color: #818181;
+                display: block;
+                transition: 0.3s;
+                cursor: default;
+            }
+
+            .closebtn {
+                position: absolute;
+                top: 0;
+                left: 25px;
+                font-size: 36px;
+                margin-top: 10px;
+                cursor: default;
+                color: #818181;
+            }
+
+            .active {
+                color: white;
+            }
         }
     }
 }
