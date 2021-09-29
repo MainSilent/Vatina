@@ -301,7 +301,9 @@ input:checked+.slider:before {
         }
     
         .list {
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            align-items: flex-start;
+            justify-content: space-evenly;
+            grid-template-columns: repeat(auto-fit, 100px);
     
             .show {
                 height: 100px;
