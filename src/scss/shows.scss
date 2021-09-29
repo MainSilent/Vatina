@@ -124,6 +124,7 @@
                 .views {
                     position: absolute;
                     right: 0;
+                    font-size: 16px;
                     margin-top: 8px;
                     margin-right: 4px;
                 }
@@ -183,4 +184,86 @@ input:checked+.slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+@media screen and (max-width: 1100px) {
+    .shows {
+        .topbar {
+            margin-top: 20px;
+            border-bottom: 1px solid #00000077;
+    
+            .sort {
+                & > * {
+                    padding: 3px 6px; 
+                    font-size: 13px;
+                }
+            }
+    
+            .search {
+                input {
+                    font-size: 13px;
+                }
+    
+                button {
+                    padding: 3px 6px;  
+                    margin-right: 3px;
+                    font-size: 13px;
+                }
+            }
+        }
+    
+        .list {
+            grid-gap: 0;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    
+            .show {
+                height: 140px;
+                width: 140px;
+                transition: .3s;
+                border-radius: .3vw;
+    
+                &:hover {
+                    box-shadow: 0 0 6px rgba(0, 0, 0, 1);
+                }
+
+                .details {
+                    border-bottom-left-radius: .3vw;
+                    border-bottom-right-radius: .3vw;
+    
+                    .title {
+                        font-size: 14px;
+                        margin-bottom: 6px;
+                        margin-left: 4px;
+                    }
+    
+                    .views {
+                        font-size: 14px;
+                        margin-top: 4px;
+                        margin-right: 4px;
+                    }
+                }
+            }
+        }
+    }
+    
+    .switch {
+        width: 27px;
+        height: 12px;
+        margin-left: 2px;
+    }
+    
+    .slider:before {
+        height: 9px;
+        width: 9px;
+        left: 2px;
+        bottom: 1.7px;
+    }
+    
+    input:checked+.slider:before {
+        transform: translateX(14px);
+    }
+}
+
+@media screen and (max-width: 800px) {
+
 }
