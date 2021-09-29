@@ -35,3 +35,40 @@
         }
     }
 }
+
+@media screen and (max-width: 1100px) {
+    .menu {
+        padding: 8px;
+    
+        .logo {
+            width: 80px;
+        }
+    
+        .items {
+            font-size: 15px;
+
+            a {
+                &:hover {
+                    box-shadow: inset 0px -1px rgb(20, 183, 189);
+                }
+            }
+    
+            .active {
+                box-shadow: inset 0px -1px rgb(20, 183, 189);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .menu {
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        box-shadow: #d1c9c9 0 0 12px;
+    
+        .logo {
+            width: 60px;
+        }
+    }
+}
