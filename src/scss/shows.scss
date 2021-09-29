@@ -81,6 +81,7 @@
         display: grid;
         grid-gap: 10px;
         grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        grid-template-rows: min-content;
         grid-row-gap: 10px !important;
         grid-column-gap: 10px !important;
         margin: 15px 10px 10px;
