@@ -91,7 +91,6 @@
             transition: .3s;
             border-radius: .25vw;
             background: transparent;
-            margin-bottom: 20px;
 
             &:hover {
                 box-shadow: 0 0 10px rgba(0, 0, 0, 1);
@@ -311,7 +310,6 @@ input:checked+.slider:before {
                 height: 100px;
                 width: 100px;
                 border-radius: .7vw;
-                margin-bottom: 15px;
     
                 .thumbnail {
                     border-radius: .7vw;
