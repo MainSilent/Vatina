@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import validator from 'validator'
 
 class Login extends Component {
     constructor() {
@@ -13,7 +14,7 @@ class Login extends Component {
     }
     forgetPassword(event) {
         const email = document.querySelector('#email')
-        if (!email.value)
+        if (!email.value || !validator.isEmail(email.value))
             email.classList.add('invalid')
         else {
             email.classList.remove('invalid')
@@ -31,6 +32,10 @@ class Login extends Component {
         document.querySelectorAll(".form__field").forEach(elem => {
             elem.addEventListener("keyup", event => event.key === "Enter" && this.props.submit())
         })
+    }
+    componentDidUpdate() {
+        this.props.isSubmit && this.state.isForget &&
+            this.setState({ isForget: false })
     }
     render() {
         const fields = [

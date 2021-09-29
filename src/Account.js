@@ -43,7 +43,8 @@ class Account extends Component {
 
         this.setState({ 
             isSubmit: true,
-            error: ''
+            error: '',
+            success: ''
         })
         document.querySelector('.submit').classList.remove('error')
         document.querySelectorAll('input').forEach(elem => elem.classList.remove('invalid'))
