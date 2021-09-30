@@ -11,6 +11,7 @@ class Show extends Component {
         this.state = {
             scrolled: false,
             muted: true,
+            showComments: true,
             users: ['Benjamin', 'James', 'Oliver', 'Patricia', 'Charles'],
             comment: '',
             comments: []
@@ -19,6 +20,7 @@ class Show extends Component {
         this.addComment = this.addComment.bind(this)
     }
     scrollBottom() {
+        if (!this.state.showComments) return
         const elem = document.querySelector('.comments')
         elem.scrollTop = elem.scrollHeight - elem.clientHeight
     }
@@ -56,6 +58,12 @@ class Show extends Component {
     }
     componentDidMount() {
         const comments = document.querySelector('.comments')
+
+        if (document.documentElement.clientWidth <= 800)
+            this.setState({
+                showComments: false
+            })
+
         comments.addEventListener('scroll', event => {
             if (comments.clientHeight + comments.scrollTop >= comments.scrollHeight)
                 this.state.scrolled &&
@@ -91,7 +99,7 @@ class Show extends Component {
                 </div>
 
                 <div className="comments-container">
-                    <div className="comments">
+                    {this.state.showComments && <div className="comments">
                         {this.state.comments.map((c, i) => 
                             <div className="comment" key={i}>
                                 <img alt="profile" src={`/static/images/profile/${c.name}.${c.name !== 'Guest' ? 'jpeg' : 'png'}`}/>
@@ -101,7 +109,7 @@ class Show extends Component {
                                 </div>
                             </div>
                         )}
-                    </div>
+                    </div>}
 
                     <div className="add">
                         <input 
@@ -112,7 +120,7 @@ class Show extends Component {
                             onKeyUp={e => e.key === 'Enter' && this.addComment()}
                             placeholder="Add a Comment..."
                         />
-                        <span className="send toggle-comments"><FontAwesomeIcon icon={faComment} /></span>
+                        <span className="send toggle-comments" onClick={() => this.setState({ showComments: !this.state.showComments })}><FontAwesomeIcon icon={faComment} /></span>
                         <span className="send" onClick={this.addComment}><FontAwesomeIcon icon={faPaperPlane} /></span>
                     </div>
                 </div>
