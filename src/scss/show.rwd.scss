@@ -125,6 +125,7 @@
     .show-container {
         display: flex;
         flex-direction: column;
+        position: relative;
         width: 100%;
         margin: 0;
         margin-top: 10px;
@@ -231,14 +232,16 @@
         }
     
         .comments-container {
-            margin: 10px;
+            position: static;
+            margin: 0;
     
             .comments {
-                //position: absolute;
-                position: static;
+                position: absolute;
                 display: flex;
+                display: none;
                 flex-direction: column;
                 width: 100%;
+                top: 0;
                 height: calc(100% - 40px);
                 overflow-y: auto;
     
