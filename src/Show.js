@@ -56,14 +56,8 @@ class Show extends Component {
             this.generateComment()
         }, Math.floor(Math.random() * (7 - 1) + 1) * 1000)
     }
-    componentDidMount() {
+    checkScroll() {
         const comments = document.querySelector('.comments')
-
-        if (document.documentElement.clientWidth <= 800)
-            this.setState({
-                showComments: false
-            })
-
         comments.addEventListener('scroll', event => {
             if (comments.clientHeight + comments.scrollTop >= comments.scrollHeight)
                 this.state.scrolled &&
@@ -76,7 +70,14 @@ class Show extends Component {
                         scrolled: true
                     })
         })
-
+    }
+    componentDidMount() {
+        if (document.documentElement.clientWidth <= 800)
+            this.setState({
+                showComments: false
+            })
+        
+        this.checkScroll()
         this.generateComment()
     }
     render() {
