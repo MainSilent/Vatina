@@ -245,6 +245,10 @@
                 .comment {
                     width: calc(100% - 10px);
                     margin: 6px 2px;
+
+                    &:last-child {
+                        padding-bottom: 10px;
+                    }
     
                     img {
                         width: 30px;
