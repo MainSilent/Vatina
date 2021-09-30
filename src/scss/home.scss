@@ -293,9 +293,27 @@
             div:last-child {
                 transform: translateX(30%);
             }
+
+            &:nth-child(1) img {
+                width: 210px;
+            }
+
+            &:nth-child(2) img {
+                width: 210px;
+            }
+
+            &:nth-child(3) img {
+                width: 140px;
+                height: 190px;
+            }
+
+            &:nth-child(2) {
+                flex-direction: column-reverse;
+            }
     
             div {
                 width: 70%;
+                margin-top: 20px;
     
                 h2 {
                     font-size: 15px;
