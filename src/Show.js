@@ -59,7 +59,7 @@ class Show extends Component {
     checkScroll() {
         const comments = document.querySelector('.comments')
         comments.addEventListener('scroll', event => {
-            if (comments.clientHeight + comments.scrollTop >= comments.scrollHeight)
+            if (comments.clientHeight + comments.scrollTop >= comments.scrollHeight - 5)
                 this.state.scrolled &&
                     this.setState({
                         scrolled: false
