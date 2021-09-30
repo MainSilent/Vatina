@@ -137,33 +137,11 @@
 
 @media screen and (max-width: 1350px) {
     .intro-container {
-        display: flex;
-        align-items: center;
-        background-color: transparent;
-        width: 99%;
         height: 450px;
-        margin: auto;
-        margin-top: 10px;
-        overflow: hidden;
-        background-position: center;
-        background-size: cover;
-        
-        .crop {
-            position: absolute;
-            width: 200%;
-            height: 80px;
-            background-color: #f5f5f5;
-            align-self: flex-end;
-            margin-right: 0;
-            margin-left: -2px;
-            transform: rotate(-2.5deg);
-        }
     
         .intro {
             h1 {
-                position: absolute;
                 font-size: 28px;
-                color: white;
                 padding: 30px;
                 margin-top: -100px;
                 margin-left: 40px;
@@ -171,29 +149,8 @@
             }
     
             .demo {
-                position: absolute;
                 height: 400px;
-                top: 90px;
                 right: 100px;
-                pointer-events: none;
-                animation: demo_animation 0.8s;
-                animation-fill-mode: forwards;
-                z-index: 1;
-            }
-        }
-    
-        @keyframes intro_animation {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes demo_animation {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-                top: 120px;
             }
         }
     }
@@ -204,22 +161,6 @@
         .feature {
             margin-bottom: 30px;
 
-            img:first-child {
-                transform: translateX(-30%);
-            }
-    
-            div:first-child {
-                transform: translateX(-30%);
-            }
-    
-            img:last-child {
-                transform: translateX(30%);
-            }
-    
-            div:last-child {
-                transform: translateX(30%);
-            }
-
             img:nth-child(2) {
                 width: 420px;
             }
@@ -229,16 +170,11 @@
             }
     
             div {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-    
                 h2 {
                     font-size: 24px;
                 }
     
                 p {
-                    margin-top: 10px;
                     font-size: 16px;
                     line-height: 20px;
                 }
