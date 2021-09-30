@@ -226,7 +226,7 @@
     }
     
     .features {
-        margin: 20px;
+        margin: 20px 0;
     
         .feature {
             margin-bottom: 30px;
@@ -240,6 +240,8 @@
             }
     
             div {
+                width: 45%;
+
                 h2 {
                     font-size: 17px;
                 }
