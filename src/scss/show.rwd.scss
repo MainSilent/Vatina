@@ -1,13 +1,10 @@
 @media screen and (max-width: 1350px) {
     .show-container {
-        grid-template-columns: 350px 1px 1fr;
-        grid-template-rows: 100px 1fr;
-        width: 94%;
-        height: 100%;
-        margin: 50px auto;
-        transition: 0.2s;
-        border-radius: 0.2vw;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        grid-template-columns: 260px 1px 1fr;
+        grid-template-rows: 70px 1fr;
+        width: 99%;
+        margin: 10px auto;
+        border-radius: 0.3vw;
     
         .line {
             width: 1px;
@@ -16,127 +13,112 @@
     
         .host-container {
             h1 {
-                font-size: 22px;
-                margin-left: 10px;
+                font-size: 16px;
+                margin-left: 5px;
     
                 span {
-                    font-size: 15px;
+                    font-size: 12px;
                 }
             }
     
             img {
-                height: 50%;
-                margin-left: 20px;
+                height: 45%;
+                margin-left: 10px;
             }
     
             .views {
-                top: 28px;
-                right: 10px;
+                font-size: 12px;
+                top: 21px;
+                right: 8px;
             }
         }
     
         .product-container {
-            margin-left: 20px;
+            margin-left: 10px;
     
             .name {
-                font-size: 17px;
+                font-size: 14px;
                 
                 img {
-                    margin-right: 5px;
-                    width: 32px;
-                    height: 32px;
-                    border-radius: 50%;
+                    margin-right: 4px;
+                    width: 26px;
+                    height: 26px;
                 }
             }
     
             .description {
-                margin-top: 5px;
-                font-size: 15px;
+                margin-top: 4px;
+                font-size: 12px;
             }
     
             .price {
-                height: 45px;
-                width: 80px;
-                margin-right: 20px;
-                border-radius: 0.25vw;
-                font-size: 16px;
+                height: 35px;
+                width: 65px;
+                margin-right: 10px;
+                border-radius: 0.3vw;
+                font-size: 12px;
             }
         }
     
         .video-container {
             .mute {
-                bottom: 5px;
-                right: 5px;
-                padding: 10px;
-                font-size: 16px;
-            }
-    
-            video {
-                width: 100%;
-                height: 100%;
+                bottom: 4px;
+                right: 4px;
+                padding: 6px;
+                font-size: 10px;
             }
         }
     
         .comments-container {
-            margin: 20px 10px 10px;
+            margin: 10px;
     
             .comments {
-                height: calc(100% - 56px);
+                height: calc(100% - 40px);
     
                 // Chrome scrollbar
                 &::-webkit-scrollbar {
-                    width: 0.6em;
-                    border-radius: 0.2vw;
-                }
-                
-                &::-webkit-scrollbar-thumb {
-                    background-color: rgba(0, 0, 0, 0.5);
-                    border-radius: 0.2vw;
+                    width: 0.4em;
                 }
     
                 .comment {
-                    width: calc(100% - 10px);
-                    margin: 8px 5px;
+                    width: calc(100% - 4px);
+                    margin: 6px 2px;
     
                     img {
-                        width: 36px;
-                        height: 36px;
-                        margin-right: 8px;
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 4px;
                     }
     
                     div {
                         .name {
-                            font-size: 17px;
+                            font-size: 12px;
                         }
         
                         .text {
-                            margin-top: 4px;
-                            font-size: 16px;
-                            padding: 8px;
-                            border-radius: 0.22vw;
-                            line-height: 1.3em;
+                            margin-top: 2px;
+                            font-size: 10px;
+                            padding: 6px;
+                            border-radius: 0.3vw;
                         }
                     }
                 }
             }
     
             .add {
-                width: 100%;
-    
                 input {
-                    height: 30px;
                     width: 100%;
-                    font-size: 18px;
+                    font-size: 14px;
     
                     &::placeholder{
-                        font-size: 18px;
+                        font-size: 14px;
                     }
                 }
     
                 .send {
-                    padding: 10px;
-                    font-size: 18px;
-                    border-radius: .2vw;
+                    padding: 8px;
+                    font-size: 14px;
+                    border-radius: .3vw;
                 }
             }
         }
