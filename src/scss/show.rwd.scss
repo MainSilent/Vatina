@@ -242,24 +242,10 @@
                 width: 100%;
                 top: 0;
                 height: calc(100% - 40px);
-                overflow-y: auto;
-    
-                // Firefox scrollbar
-                scrollbar-color: rgba(0, 0, 0, 0.5);
     
                 // Chrome scrollbar
                 &::-webkit-scrollbar {
                     width: 0.4em;
-                    border-radius: 0.2vw;
-                }
-                
-                &::-webkit-scrollbar-track {
-                    background-color: transparent;
-                }
-                
-                &::-webkit-scrollbar-thumb {
-                    background-color: rgba(0, 0, 0, 0.5);
-                    border-radius: 0.2vw;
                 }
     
                 .comment {
