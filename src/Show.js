@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faVolumeUp } from '@fortawesome/fontawesome-free-solid'
+import { faEye, faVolumeUp, faComment } from '@fortawesome/fontawesome-free-solid'
 import { faVolumeMute, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import randomComments from './random_comments.json'
 import './scss/show.scss'
@@ -112,6 +112,7 @@ class Show extends Component {
                             onKeyUp={e => e.key === 'Enter' && this.addComment()}
                             placeholder="Add a Comment..."
                         />
+                        <span className="send toggle-comments"><FontAwesomeIcon icon={faComment} /></span>
                         <span className="send" onClick={this.addComment}><FontAwesomeIcon icon={faPaperPlane} /></span>
                     </div>
                 </div>

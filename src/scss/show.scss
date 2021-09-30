@@ -233,6 +233,10 @@
             }
         }
     }
+
+    .toggle-comments {
+        display: none;
+    }
 }
 
 @import './show.rwd.scss'
