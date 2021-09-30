@@ -288,3 +288,15 @@
         }
     } 
 }
+
+@media screen and (max-width: 300px) {
+    .intro-container {
+        .intro {
+            h1 {
+                font-size: 17px;
+                padding: 15px;
+                margin-left: 10px;
+            }
+        }
+    }
+}
