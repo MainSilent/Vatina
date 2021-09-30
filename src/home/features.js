@@ -12,15 +12,23 @@ class Features extends Component {
     }
     componentDidMount() {
         const features = document.querySelectorAll('.feature')
-        document.onscroll = () => {
+
+        if (document.documentElement.clientHeight <= 500)
             features.forEach(feature => {
-                if (this.inViewport(feature)) {
-                    feature.style.animation = 'feature_animation 0.7s forwards'
-                    feature.querySelector('div').style.animation = 'first_child_animation 0.7s forwards'
-                    feature.querySelector('img').style.animation = 'last_child_animation 0.7s forwards'
-                }
+                feature.style.animation = 'feature_animation 0.7s forwards'
+                feature.querySelector('div').style.animation = 'first_child_animation 0.7s forwards'
+                feature.querySelector('img').style.animation = 'last_child_animation 0.7s forwards'
             })
-        }
+        else             
+            document.onscroll = () => {
+                features.forEach(feature => {
+                    if (this.inViewport(feature)) {
+                        feature.style.animation = 'feature_animation 0.7s forwards'
+                        feature.querySelector('div').style.animation = 'first_child_animation 0.7s forwards'
+                        feature.querySelector('img').style.animation = 'last_child_animation 0.7s forwards'
+                    }
+                })
+            }
     }
     render() {
         return (
