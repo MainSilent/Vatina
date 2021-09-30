@@ -199,16 +199,11 @@
     }
     
     .features {
-        display: flex;
-        flex-direction: column;
-        margin: 100px 50px;
+        margin: 50px 20px;
     
         .feature {
-            display: flex;
-            align-items: center;
-            opacity: 0;
-            justify-content: space-evenly;
-    
+            margin-bottom: 30px;
+
             img:first-child {
                 transform: translateX(-30%);
             }
@@ -224,46 +219,39 @@
             div:last-child {
                 transform: translateX(30%);
             }
+
+            img:nth-child(2) {
+                width: 420px;
+            }
+
+            img:nth-child(1) {
+                width: 300px;
+            }
     
             div {
-                width: 35%;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
     
                 h2 {
-                    font-size: 28px;
+                    font-size: 24px;
                 }
     
                 p {
                     margin-top: 10px;
-                    font-size: 19px;
-                    line-height: 22px;
-                    text-align: justify;
+                    font-size: 16px;
+                    line-height: 20px;
                 }
-    
-                h2, p {
-                    font-family: arial;
-                }
-            }
-        }
-    
-        @keyframes feature_animation {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
             }
         }
     
         @keyframes first_child_animation {
-            from { transform: translateX(-30%); }
+            from { transform: translateX(-10%); }
             to { transform: translateX(0); }
         }   
     
         @keyframes last_child_animation {
-            from { transform: translateX(30%); }
+            from { transform: translateX(10%); }
             to { transform: translateX(0); }     
         }
     }    
