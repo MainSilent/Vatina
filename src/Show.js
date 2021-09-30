@@ -80,6 +80,10 @@ class Show extends Component {
         this.checkScroll()
         this.generateComment()
     }
+    componentDidUpdate() {
+        this.state.showComments && !this.state.scrolled &&
+            this.checkScroll()
+    }
     render() {
         return (
             <div className="show-container">
