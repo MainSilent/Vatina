@@ -325,6 +325,10 @@
                     line-height: 16px;
                 }
             }
+
+            &:nth-child(3) div {
+                margin-top: 15px;
+            }
         }
     
         @keyframes first_child_animation {
