@@ -177,12 +177,12 @@
             .name {
                 display: flex;
                 align-items: center;
-                font-size: 14px;
+                font-size: 13px;
                 
                 img {
                     margin-right: 4px;
-                    width: 26px;
-                    height: 26px;
+                    width: 28px;
+                    height: 28px;
                 }
             }
     
@@ -192,24 +192,15 @@
             }
     
             .price {
-                display: flex;
-                align-items: center;
-                justify-content: center;
                 height: 35px;
-                width: 65px;
+                width: 90px;
                 margin-right: 10px;
-                color: white;
-                background-color: rgb(121, 69, 163);
-                border-radius: 0.3vw;
-                font-size: 12px;
-                transition: 0.2s;
-                text-align: center;
-                cursor: pointer;
+                border-radius: 0.8vw;
     
                 &:hover {
-                    background-color: white;
-                    color: black;
-                    border: 1px solid black;
+                    background-color: rgb(121, 69, 163);
+                    color: white;
+                    border: none;
                 }
     
                 &:after {
@@ -217,7 +208,7 @@
                 }
     
                 &:hover:after {
-                    content: "Buy";
+                    content: "299$";
                 }
             }
         }
@@ -254,7 +245,8 @@
             margin: 10px;
     
             .comments {
-                position: absolute;
+                //position: absolute;
+                position: static;
                 display: flex;
                 flex-direction: column;
                 width: 100%;
