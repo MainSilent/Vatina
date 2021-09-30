@@ -246,6 +246,10 @@
                     width: calc(100% - 10px);
                     margin: 6px 2px;
 
+                    &:first-child {
+                        padding-top: 10px;
+                    }
+
                     &:last-child {
                         padding-bottom: 10px;
                     }
