@@ -6,8 +6,8 @@ function Items() {
     return (
         <>
             <Link to={process.env.PUBLIC_URL+"/"} exact><li>Home</li></Link>
-            <Link to={process.env.PUBLIC_URL+"/shows"}><li>Shows</li></Link>
-            <Link to={process.env.PUBLIC_URL+"/login"} isActive={(m, l) => process.env.PUBLIC_URL+'/login' === l.pathname.toLowerCase() || process.env.PUBLIC_URL+'/register' === l.pathname.toLowerCase()}>
+            <Link to={process.env.PUBLIC_URL+"/shows"} isActive={(m, l) => process.env.PUBLIC_URL+'/shows' === l.pathname || process.env.PUBLIC_URL+'/show' === l.pathname}><li>Shows</li></Link>
+            <Link to={process.env.PUBLIC_URL+"/login"} isActive={(m, l) => process.env.PUBLIC_URL+'/login' === l.pathname || process.env.PUBLIC_URL+'/register' === l.pathname}>
                 <li>Login / Register</li>
             </Link>
         </>
