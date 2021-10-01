@@ -54,7 +54,7 @@ class Account extends Component {
         const password = document.getElementById('password')
         const re_password = document.getElementById('re_password')
 
-        if (this.state.path === '/login') {
+        if (this.state.path === process.env.PUBLIC_URL+'/login') {
             if (!email.value || !password.value) {
                 this.setInvalid('Empty Login Credentials', [!email.value && email, !password.value && password])
                 return
@@ -64,7 +64,7 @@ class Account extends Component {
                 return
             }
         }
-        else if (this.state.path === '/register') {
+        else if (this.state.path === process.env.PUBLIC_URL+'/register') {
             if (!email.value || !username.value || !password.value || !re_password.value) {
                 this.setInvalid('Empty Registration Data', [
                     !email.value && email,
@@ -82,14 +82,6 @@ class Account extends Component {
                 this.setInvalid('Username is shorter than length of 3', [username])
                 return
             }
-            if (password.value !== re_password.value) {
-                this.setInvalid('Password does not match', [re_password])
-                return
-            }
-            // if (!this.isStrongPassword(password))
-            //     return
-        }
-        else if (this.state.path === '/resetpassword') {
             if (password.value !== re_password.value) {
                 this.setInvalid('Password does not match', [re_password])
                 return
