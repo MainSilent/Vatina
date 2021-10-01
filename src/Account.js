@@ -13,7 +13,7 @@ class Account extends Component {
             isSubmit: false,
             success: '',
             error: '',
-            path: window.location.pathname
+            path: window.location.hash
         }
         this.submit = this.submit.bind(this)
     }
@@ -54,7 +54,7 @@ class Account extends Component {
         const password = document.getElementById('password')
         const re_password = document.getElementById('re_password')
 
-        if (this.state.path === process.env.PUBLIC_URL+'/login') {
+        if (this.state.path === process.env.PUBLIC_URL+'#/login') {
             if (!email.value || !password.value) {
                 this.setInvalid('Empty Login Credentials', [!email.value && email, !password.value && password])
                 return
@@ -64,7 +64,7 @@ class Account extends Component {
                 return
             }
         }
-        else if (this.state.path === process.env.PUBLIC_URL+'/register') {
+        else if (this.state.path === process.env.PUBLIC_URL+'#/register') {
             if (!email.value || !username.value || !password.value || !re_password.value) {
                 this.setInvalid('Empty Registration Data', [
                     !email.value && email,
@@ -107,7 +107,7 @@ class Account extends Component {
         elems.forEach(elem => elem && elem.classList.add('invalid'))
     }
     componentDidUpdate() {
-        if (this.state.path !== window.location.pathname) {
+        if (this.state.path !== window.location.hash) {
             if (this.state.isSubmit)
                 this.props.history.push(this.state.path) 
             else {
@@ -115,13 +115,13 @@ class Account extends Component {
                     isSubmit: false,
                     success: '',
                     error: '',
-                    path: window.location.pathname
+                    path: window.location.hash
                 })
             }
         }
     }
     render() {
-        let path = this.state.path.split('/')[2] ?? this.state.path.split('/')[1]
+        let path = this.state.path.split('/')[1]
         return (
             <div className="login-register">
                 {path !== 'resetpassword' &&
