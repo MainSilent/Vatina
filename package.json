@@ -2,7 +2,6 @@
   "name": "vatina",
   "version": "0.1.0",
   "private": true,
-  "homepage": "Vatina",
   "dependencies": {
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
