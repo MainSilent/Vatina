@@ -34,7 +34,7 @@ class Features extends Component {
         return (
             <div className="features">
                 <div className="feature">
-                    <img src="/static/images/feature1.png" alt="Share Your Products"/>
+                    <img src={process.env.PUBLIC_URL+"/static/images/feature1.png"} alt="Share Your Products"/>
                     <div>
                         <h2>Share Your Products</h2>
                         <p>
@@ -51,11 +51,11 @@ class Features extends Component {
                             Without any previous knowledge and experience you can start a live show online in a few minutes, Live shows can be a fun way to grow your business and market. It's easier than many people think. All you need to do is to sign up.
                         </p>
                     </div>
-                    <img src="/static/images/feature2.png" alt="Easy and Simple to Control"/>
+                    <img src={process.env.PUBLIC_URL+"/static/images/feature2.png"} alt="Easy and Simple to Control"/>
                 </div>
 
                 <div className="feature">
-                    <img src="/static/images/feature3.png" alt="Exchange Ideas"/>
+                    <img src={process.env.PUBLIC_URL+"/static/images/feature3.png"} alt="Exchange Ideas"/>
                     <div>
                         <h2>Exchange Ideas</h2>
                         <p>

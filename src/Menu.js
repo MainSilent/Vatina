@@ -5,9 +5,9 @@ import './scss/menu.scss'
 function Items() {
     return (
         <>
-            <Link to="/" exact><li>Home</li></Link>
-            <Link to="/shows"><li>Shows</li></Link>
-            <Link to="/login" isActive={(m, l) => '/login' === l.pathname.toLowerCase() || '/register' === l.pathname.toLowerCase()}>
+            <Link to={process.env.PUBLIC_URL+"/"} exact><li>Home</li></Link>
+            <Link to={process.env.PUBLIC_URL+"/shows"}><li>Shows</li></Link>
+            <Link to={process.env.PUBLIC_URL+"/login"} isActive={(m, l) => process.env.PUBLIC_URL+'/login' === l.pathname.toLowerCase() || process.env.PUBLIC_URL+'/register' === l.pathname.toLowerCase()}>
                 <li>Login / Register</li>
             </Link>
         </>
@@ -24,7 +24,7 @@ class Menu extends Component {
     render() {
         return (
             <div className='menu'>
-                <a href='/'><img className="logo" src="/static/images/logo.png" alt="logo" /></a>
+                <a href={process.env.PUBLIC_URL+'/'}><img className="logo" src={process.env.PUBLIC_URL+"/static/images/logo.png"} alt="logo" /></a>
                 <ul className="items">
                     <Items />
                 </ul>

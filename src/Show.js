@@ -88,7 +88,7 @@ class Show extends Component {
         return (
             <div className="show-container">
                 <div className="host-container">
-                    <img src='/static/images/adobe.jpg' alt="adobe logo"/>
+                    <img src={process.env.PUBLIC_URL+'/static/images/adobe.jpg'} alt="adobe logo"/>
                     <h1>Adobe<span><br/>Live show started: 8:53 AM</span></h1>
                     <p className="views">83 <FontAwesomeIcon icon={faEye} /></p>
                 </div>
@@ -97,7 +97,7 @@ class Show extends Component {
 
                 <div className="product-container">
                     <div className="info">
-                        <p className="name"><img src='/static/images/AdobeXD.png' alt="Adobe XD" /> Adobe XD Beta</p>
+                        <p className="name"><img src={process.env.PUBLIC_URL+'/static/images/AdobeXD.png'} alt="Adobe XD" /> Adobe XD Beta</p>
                         <p className="description">This product is a vector-based user experience design tool for web apps and mobile apps.</p>
                     </div>
                     <p className="price" onClick={() => window.open('https://www.adobe.com/products/xd.html', '_blank')}></p>
@@ -107,7 +107,7 @@ class Show extends Component {
                     {this.state.showComments && <div className="comments">
                         {this.state.comments.map((c, i) => 
                             <div className="comment" key={i}>
-                                <img alt="profile" src={`/static/images/profile/${c.name}.${c.name !== 'Guest' ? 'jpeg' : 'png'}`}/>
+                                <img alt="profile" src={`${process.env.PUBLIC_URL}/static/images/profile/${c.name}.${c.name !== 'Guest' ? 'jpeg' : 'png'}`}/>
                                 <div>
                                     <p className="name">{c.name}</p>
                                     <p className="text" style={c.name === 'Guest' ? {wordBreak: 'break-all'} : {}}>{c.text}</p>
@@ -132,7 +132,7 @@ class Show extends Component {
 
                 <div className="video-container">
                     <video autoPlay muted={this.state.muted}>
-                        <source src="/static/AdobeXD.webm" type="video/webm" width="100%" height="auto"/>
+                        <source src={process.env.PUBLIC_URL+"/static/AdobeXD.webm"} type="video/webm" width="100%" height="auto"/>
                     </video>
                     <span className="mute" onClick={() => this.setState({ muted: !this.state.muted })}><FontAwesomeIcon icon={this.state.muted ? faVolumeMute : faVolumeUp} /></span>
                 </div>

@@ -18,10 +18,10 @@ class App extends Component {
             <Router>
                 <Menu />
                 <Switch>
-                    <Route path={["/login", "/register", "/resetpassword"]} component={Account} sensitive/>
-                    <Route path="/shows" component={Shows} exact/>
-                    <Route path="/show" component={Show} exact/>
-                    <Route path='/' exact>
+                    <Route path={[process.env.PUBLIC_URL+"/login", process.env.PUBLIC_URL+"/register"]} component={Account} sensitive/>
+                    <Route path={process.env.PUBLIC_URL+"/shows"} component={Shows} exact/>
+                    <Route path={process.env.PUBLIC_URL+"/show"} component={Show} exact/>
+                    <Route path={process.env.PUBLIC_URL+'/'} exact>
                         <Home />
                         <Footer />
                     </Route>

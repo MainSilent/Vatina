@@ -129,13 +129,13 @@ class Account extends Component {
         }
     }
     render() {
-        let path = this.state.path.split('/')[1]
+        let path = this.state.path.split('/')[2] ?? this.state.path.split('/')[1]
         return (
             <div className="login-register">
                 {path !== 'resetpassword' &&
                 <div className="nav">
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
+                    <Link to={process.env.PUBLIC_URL+"/login"}>Login</Link>
+                    <Link to={process.env.PUBLIC_URL+"/register"}>Register</Link>
                 </div>
                 }
 
@@ -155,7 +155,7 @@ class Account extends Component {
                 <div className={`submit ${this.state.error ? 'error' : ''}`} onClick={this.submit}>
                     {
                         !this.state.isSubmit ? 
-                            <p>{path !== 'resetpassword' ? path[0].toUpperCase() + path.slice(1).toLowerCase() : "Change"}</p> :
+                            <p>{path[0].toUpperCase() + path.slice(1).toLowerCase()}</p> :
                             <div className="loader"></div>
                     }  
                 </div>
