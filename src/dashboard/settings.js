@@ -10,9 +10,9 @@ class Settings extends Component {
                 </div>
 
                 <form className="password">
-                    <input type="text"/>
-                    <input type="text"/>
-                    <input type="submit"/>
+                    <input type="password" name="password" placeholder="Password"/>
+                    <input type="password" name="re-password" placeholder="Re-enter Password"/>
+                    <input type="submit" value="Change"/>
                 </form>
             </div>
         )
