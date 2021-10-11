@@ -27,7 +27,7 @@ class Dashboard extends Component {
                 </div>
 
                 <div className="content">
-                    <Route path={process.env.PUBLIC_URL+"/dashboard/addshow"} component={AddShow} exact/>
+                    <Route path={[process.env.PUBLIC_URL+"/dashboard/addshow", process.env.PUBLIC_URL+"/dashboard/"]} component={AddShow} exact/>
                     <Route path={process.env.PUBLIC_URL+"/dashboard/settings"} component={Settings} exact/>
                 </div>
             </div>
