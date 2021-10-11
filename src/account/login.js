@@ -65,12 +65,12 @@ class Login extends Component {
                         </label>
                     </div>
                 )}
-                {
+                {/* {
                 !this.props.isSubmit && 
                 <p className={`login forget_password ${this.state.isForget ? 'active' : ''}`} onClick={this.forgetPassword}>
                     {!this.state.isForget ? 'Forget Password' : 'An email have been sent.'}
                 </p>
-                }
+                } */}
             </>
         )
     }
