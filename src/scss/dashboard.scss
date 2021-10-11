@@ -10,5 +10,49 @@
     border-radius: 0.2vw;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 
-    
+    .navbar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 12%;
+        padding: 10px;
+
+        &:before {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            height: 97%;
+            content: '';
+            border-right: 1px solid rgba(0, 0, 0, .2);
+        }
+
+        div, ul {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+        }
+
+        a {
+            color: black;
+            cursor: pointer;
+            width: 100%;
+            padding: 8px;
+            border-radius: 0.2vw;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            transition: .2s;
+        }
+
+        .active, a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .content {
+        width: 88%;
+    }
 }

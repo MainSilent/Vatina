@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink as Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog } from '@fortawesome/fontawesome-free-solid'
 import { faSignOutAlt, faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -10,14 +11,16 @@ class Dashboard extends Component {
             <div className="dashboard">
                 <div className="navbar">
                     <ul className="show-list">
-
+                        <a href="#test">Adobe</a>
+                        <a href="#test">Google</a>
+                        <a href="#test">Microsoft</a>
+                        <Link to={process.env.PUBLIC_URL+"/dashboard/addshow"} className="add-show"><FontAwesomeIcon icon={faPlus} /> Add Show</Link>
                     </ul>
 
-                    <div className="add-show"><FontAwesomeIcon icon={faPlus} /> Add Show</div>
-
-                    <div className="settings"><FontAwesomeIcon icon={faCog} /> Settings</div>
-
-                    <div className="logout"><FontAwesomeIcon icon={faSignOutAlt} /> Logout</div>
+                    <div>
+                        <Link to={process.env.PUBLIC_URL+"/dashboard/settings"} className="settings"><FontAwesomeIcon icon={faCog} /> Settings</Link>
+                        <Link to={process.env.PUBLIC_URL+"/dashboard/logout"} className="logout"><FontAwesomeIcon icon={faSignOutAlt} /> Logout</Link>
+                    </div>
                 </div>
 
                 <div className="content">
