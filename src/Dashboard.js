@@ -3,6 +3,8 @@ import { NavLink as Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog } from '@fortawesome/fontawesome-free-solid'
 import { faSignOutAlt, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { Route } from "react-router-dom"
+import Settings from './dashboard/settings'
 import './scss/dashboard.scss'
 
 class Dashboard extends Component {
@@ -24,7 +26,7 @@ class Dashboard extends Component {
                 </div>
 
                 <div className="content">
-
+                    <Route path={process.env.PUBLIC_URL+"/dashboard/settings"} component={Settings} exact/>
                 </div>
             </div>
         )
