@@ -1,10 +1,10 @@
-from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import AuthenticationFailed
 from .serializers import UserSerializer
-from .models import User
 
 class Register(APIView):
     def post(self, request):
@@ -18,21 +18,8 @@ class Register(APIView):
 
 class Login(APIView):
     def post(self, request):
-        try:
-            email = request.data['email']
-            if email:
-                pass
-        except:
-            raise AuthenticationFailed('Email field is required')
-
-        password = request.data['password']
-        
-        user = User.objects.filter(email=email).first()
-
+        user = authenticate(email=request.data.get('email'), password=request.data.get('password'))
         if user is None:
-            raise AuthenticationFailed('Invalid login credentials')
-        
-        if not user.check_password(password):
             raise AuthenticationFailed('Invalid login credentials')
 
         try:
