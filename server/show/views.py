@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import ShowSerializer
+from .models import Show
 
-# Create your views here.
+class Show(viewsets.ModelViewSet):
+    queryset = Show.objects.all()
+    serializer_class = ShowSerializer
