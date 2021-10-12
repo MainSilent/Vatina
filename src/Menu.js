@@ -3,11 +3,17 @@ import { NavLink as Link } from "react-router-dom"
 import './scss/menu.scss'
 
 function Items() {
+    const showRoutes = ["/shows", "/show"]
+    const accountRoutes = ["/login", "/register", "/dashboard"]
     return (
         <>
-            <Link to={process.env.PUBLIC_URL+"/"} exact><li>Home</li></Link>
-            <Link to={process.env.PUBLIC_URL+"/shows"} isActive={(m, l) => l.pathname.startsWith(process.env.PUBLIC_URL+'/shows') || l.pathname.startsWith(process.env.PUBLIC_URL+'/show')}><li>Shows</li></Link>
-            <Link to={process.env.PUBLIC_URL+"/login"} isActive={(m, l) => l.pathname.startsWith(process.env.PUBLIC_URL+'/login') || l.pathname.startsWith(process.env.PUBLIC_URL+'/register') || l.pathname.startsWith(process.env.PUBLIC_URL+'/dashboard')}>
+            <Link to={process.env.PUBLIC_URL+"/"} exact>
+                <li>Home</li>
+            </Link>
+            <Link to={process.env.PUBLIC_URL+"/shows"} isActive={(m, l) => showRoutes.map(r => l.pathname.startsWith(process.env.PUBLIC_URL+r)).includes(true)}>
+                <li>Shows</li>
+            </Link>
+            <Link to={process.env.PUBLIC_URL+"/login"} isActive={(m, l) => accountRoutes.map(r => l.pathname.startsWith(process.env.PUBLIC_URL+r)).includes(true)}>
                 <li>Login / Register</li>
             </Link>
         </>
