@@ -3,13 +3,18 @@ from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import AuthenticationFailed
+from .serializers import UserSerializer
 from .models import User
 
 class Register(APIView):
     def post(self, request):
-        user = User.objects.create(**request.data)
-        token = Token.objects.create(user=user)
-        return Response(data={'token': token.key})
+        user_serializer = UserSerializer(data=request.data)
+        if user_serializer.is_valid():
+            user = user_serializer.save()
+            token = Token.objects.create(user=user)
+            return Response({'token': token.key})
+
+        return Response({'message': user_serializer.errors}, status=400)
 
 class Login(APIView):
     def post(self, request):
@@ -35,13 +40,12 @@ class Login(APIView):
         except:
             token = Token.objects.get(user=user)
             
-        return Response(data={'token': token.key})
+        return Response({'token': token.key})
 
 class Logout(APIView):
     permission_classes = (IsAuthenticated, )
     
     def post(self, request):
-        user = User.objects.get(**request.data)
-        token = Token.objects.get(user=user)
+        token = Token.objects.get(user=request.user)
         token.delete()
         return Response(status=200)
