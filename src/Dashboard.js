@@ -3,7 +3,7 @@ import { NavLink as Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog } from '@fortawesome/fontawesome-free-solid'
 import { faSignOutAlt, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { Route } from "react-router-dom"
+import { Route, Redirect } from "react-router-dom"
 import AddShow from './dashboard/add-show'
 import Settings from './dashboard/settings'
 import './scss/dashboard.scss'
@@ -27,6 +27,9 @@ class Dashboard extends Component {
                 </div>
 
                 <div className="content">
+                    <Route path={process.env.PUBLIC_URL+"/dashboard/"} exact>
+                        <Redirect to={process.env.PUBLIC_URL+"/dashboard/addshow"} />
+                    </Route>
                     <Route path={[process.env.PUBLIC_URL+"/dashboard/addshow", process.env.PUBLIC_URL+"/dashboard/"]} component={AddShow} exact/>
                     <Route path={process.env.PUBLIC_URL+"/dashboard/settings"} component={Settings} exact/>
                 </div>
