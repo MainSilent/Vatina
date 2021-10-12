@@ -1,0 +1,80 @@
+@media screen and (max-width: 1350px) {
+    .dashboard {
+        width: 99%;
+        margin: 10px auto;
+        border-radius: 0.3vw;
+        box-shadow: #d1c9c9 0 0 6px;
+
+        .navbar {
+            width: 20%;
+            padding: 6px;
+            font-size: 14px;
+    
+            &:before {
+                border-right: .5px solid rgba(0, 0, 0, .1);
+            }
+    
+            div {
+                gap: 8px;
+            }
+    
+            .show-list {
+                margin-bottom: 8px;
+            }
+    
+            a {
+                padding: 6px;
+                border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+            }
+        }
+    
+        .content {
+            width: 80%;
+            padding: 6px;
+    
+            .settings {
+                .picture {
+                    margin-bottom: 10px;
+    
+                    p {
+                        font-size: 10px;
+                    }
+    
+                    img {
+                        width: 80px;
+                    }
+                }
+    
+                .password {
+                    gap: 8px;
+                }
+            }
+    
+            .add-show {
+                .add-form {
+                    gap: 8px;
+                }
+            }
+    
+            input, textarea {
+                width: 300px;
+                padding: 8px 0;
+                font-size: 12px;
+            }
+    
+            input[type="submit"] {
+                margin-top: 10px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .dashboard {
+        width: 100%;
+        margin: 10px 0;
+        border-radius: 0;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+}

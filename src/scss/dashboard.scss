@@ -18,6 +18,7 @@
         justify-content: space-between;
         width: 12%;
         padding: 10px;
+        font-size: 16px;
 
         &:before {
             position: absolute;
@@ -162,3 +163,5 @@
         }
     }
 }
+
+@import './dashboard.rwd.scss'
