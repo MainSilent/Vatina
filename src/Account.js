@@ -36,6 +36,7 @@ class Account extends Component {
                 return
             }
         }
+        return true
     }
     submit() {
         if (this.state.isSubmit)
@@ -86,8 +87,8 @@ class Account extends Component {
                 this.setInvalid('Password does not match', [re_password])
                 return
             }
-            // if (!this.isStrongPassword(password))
-            //     return
+            if (!this.isStrongPassword(password))
+                return
         }
 
         setTimeout(() => {

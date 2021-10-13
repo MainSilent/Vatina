@@ -2,7 +2,7 @@
   "name": "vatina",
   "version": "0.1.0",
   "private": true,
-  "homepage": "Vatina",
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

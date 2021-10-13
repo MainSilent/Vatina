@@ -10,6 +10,8 @@ from django.core.files.storage import default_storage as storage
 from .serializers import UserSerializer
 
 class Register(APIView):
+    throttle_scope = 'register'
+
     def post(self, request):
         user_serializer = UserSerializer(data=request.data)
         if user_serializer.is_valid():
@@ -20,6 +22,8 @@ class Register(APIView):
         return Response({'message': user_serializer.errors}, status=400)
 
 class Login(APIView):
+    throttle_scope = 'login'
+
     def post(self, request):
         user = authenticate(email=request.data.get('email'), password=request.data.get('password'))
         if user is None:

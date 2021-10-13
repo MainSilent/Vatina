@@ -12,6 +12,7 @@ mux_secret_key = settings.MUX_SECRET_KEY
 mux_auth = requests.auth.HTTPBasicAuth(mux_token, mux_secret_key)
 
 class ShowView(APIView):
+    throttle_scope = 'show'
     permission_classes = (IsAuthenticatedOrReadOnly, )
 
     def get(self, request):
