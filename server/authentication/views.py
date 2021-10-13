@@ -1,9 +1,12 @@
+import os
+from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import AuthenticationFailed
+from django.core.files.storage import default_storage as storage
 from .serializers import UserSerializer
 
 class Register(APIView):
@@ -44,3 +47,23 @@ class ChangePassword(APIView):
         new_password = request.data.get('new_password')
         UserSerializer.change_password(None, request.user, new_password)
         return Response(status=200)
+
+class UploadAvatar(APIView):
+    permission_classes = (IsAuthenticated, )
+    
+    def put(self, request):
+        new_avatar = request.data.get('file')
+        avatar_ext = new_avatar.content_type.split('/')[-1]
+        path = f"{settings.STATIC_URL}/{request.user.id}.png"
+ 
+        if avatar_ext not in ['jpg', 'jpeg', 'png']:
+            return Response({'error': 'Your avatar should be png or jpeg'}, status=200)
+
+        if new_avatar.size > 2000000:
+            return Response({'error': 'Your avatar is larger than 2MB'}, status=200)
+
+        if os.path.exists(path):
+            os.remove(path)
+
+        storage.save(path, new_avatar)
+        return Response(status=204)
