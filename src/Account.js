@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink as Link } from "react-router-dom"
+import AuthContext from './AuthContext'
 import validator from 'validator'
 import Login from './account/login'
 import Register from './account/register'
@@ -79,7 +80,7 @@ class Account extends Component {
             )
             const res = await req.json()
 
-            if (req.status == 200) {
+            if (req.status === 200) {
                 window.localStorage.setItem('token', res['token'])
                 this.props.history.push('/dashboard')
             } else {
@@ -128,7 +129,7 @@ class Account extends Component {
             )
             const res = await req.json()
 
-            if (req.status == 200) {
+            if (req.status === 200) {
                 window.localStorage.setItem('token', res['token'])
                 this.props.history.push('/dashboard')
             } else {
@@ -200,5 +201,7 @@ class Account extends Component {
         )
     }
 }
+
+Account.contextType = AuthContext
 
 export default Account
