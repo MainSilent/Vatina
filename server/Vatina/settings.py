@@ -135,3 +135,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL ='authentication.User'
 AUTHENTICATION_BACKENDS = ['authentication.backends.EmailBackend']
+
+# Mux settings
+MUX_ACCESS_TOKEN = '10c43ae7-4e34-4ab9-88cc-92cc34b38341'
+MUX_SECRET_KEY = '6507zQRWRwyGaCJakWp4zuw6EFnq2wcNl3t51SboK19Vq0k+a1ENWlQ4/Ouqd/5kQ9uisqn2ycc'
