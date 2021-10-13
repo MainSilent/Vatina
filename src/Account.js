@@ -7,6 +7,10 @@ import Register from './account/register'
 import ResetPassword from './account/resetpassword'
 import './scss/account.scss'
 
+String.prototype.capitalizeTxt = String.prototype.capitalizeTxt || function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 class Account extends Component {
     constructor() {
         super()
@@ -66,27 +70,34 @@ class Account extends Component {
                 return
             }
 
-            const req = await fetch('/api/auth/login', 
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: email.value,
-                        password: password.value
+            try {
+                const req = await fetch('/api/auth/login', 
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: email.value,
+                            password: password.value
+                        })
+                    }
+                )
+                const res = await req.json()
+
+                if (req.status === 200) {
+                    window.localStorage.setItem('token', res['token'])
+                    this.context.changeToken(res['token'])
+                    this.props.history.push('/dashboard')
+                } else {
+                    this.setState({
+                        error: !res.detail ? `${Object.keys(res.message)[0].capitalizeTxt()} Error: ${res.message[Object.keys(res.message)[0]][0]}` : res.detail
                     })
                 }
-            )
-            const res = await req.json()
-
-            if (req.status === 200) {
-                window.localStorage.setItem('token', res['token'])
-                this.context.changeToken(res['token'])
-                this.props.history.push('/dashboard')
-            } else {
+            }
+            catch (e) {
                 this.setState({
-                    error: !res.detail ? res.message[Object.keys(res.message)[0]][0] : res.detail
+                    error: "Network Error"
                 })
             }
         }
@@ -115,28 +126,35 @@ class Account extends Component {
             if (!this.isStrongPassword(password))
                 return
 
-            const req = await fetch('/api/auth/register', 
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: email.value,
-                        username: username.value,
-                        password: password.value
+            try {
+                const req = await fetch('/api/auth/register', 
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: email.value,
+                            username: username.value,
+                            password: password.value
+                        })
+                    }
+                )
+                const res = await req.json()
+
+                if (req.status === 200) {
+                    window.localStorage.setItem('token', res['token'])
+                    this.context.changeToken(res['token'])
+                    this.props.history.push('/dashboard')
+                } else {
+                    this.setState({
+                        error: !res.detail ? `${Object.keys(res.message)[0].capitalizeTxt()} Error: ${res.message[Object.keys(res.message)[0]][0]}` : res.detail
                     })
                 }
-            )
-            const res = await req.json()
-
-            if (req.status === 200) {
-                window.localStorage.setItem('token', res['token'])
-                this.context.changeToken(res['token'])
-                this.props.history.push('/dashboard')
-            } else {
+            }
+            catch (e) {
                 this.setState({
-                    error: !res.detail ? res.message[Object.keys(res.message)[0]][0] : res.detail
+                    error: "Network Error"
                 })
             }
         }

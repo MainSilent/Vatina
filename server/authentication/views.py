@@ -42,7 +42,7 @@ class Logout(APIView):
     def post(self, request):
         token = Token.objects.get(user=request.user)
         token.delete()
-        return Response(status=200)
+        return Response(status=204)
 
 class ChangePassword(APIView):
     permission_classes = (IsAuthenticated, )
@@ -50,7 +50,7 @@ class ChangePassword(APIView):
     def post(self, request):
         new_password = request.data.get('new_password')
         UserSerializer.change_password(None, request.user, new_password)
-        return Response(status=200)
+        return Response(status=204)
 
 class UploadAvatar(APIView):
     permission_classes = (IsAuthenticated, )
