@@ -53,6 +53,8 @@ class Show(APIView):
         show = user.show.filter(id=id).first()
         if show == None:
             return Response({'message': { "show": "Failed to find the live stream" }}, status=404)
-        
+
+        requests.delete(f"https://api.mux.com/video/v1/live-streams/{show.stream_id}", auth=mux_auth)
+
         show.delete()
         return Response(status=204)
