@@ -36,3 +36,11 @@ class Logout(APIView):
         token = Token.objects.get(user=request.user)
         token.delete()
         return Response(status=200)
+
+class ChangePassword(APIView):
+    permission_classes = (IsAuthenticated, )
+    
+    def post(self, request):
+        new_password = request.data.get('new_password')
+        UserSerializer.change_password(None, request.user, new_password)
+        return Response(status=200)

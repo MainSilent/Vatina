@@ -9,3 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate_password(self, password):
         return make_password(password)
+
+    def change_password(self, instance, new_password):
+        instance.password = make_password(new_password)
+        instance.save()
