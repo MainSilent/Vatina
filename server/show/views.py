@@ -15,7 +15,7 @@ class Show(APIView):
 
     def post(self, request):
         if request.user.show.count() >= 3:
-            return Response({'message': { "show": "You can't have more than 3 shows" }}, status=400)
+            return Response({'message': { "show": "You can not have more than 3 shows" }}, status=400)
 
         data = { **request.data, 'owner': request.user.id }
         mux_create_payload = {
