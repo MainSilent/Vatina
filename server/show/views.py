@@ -1,5 +1,6 @@
 import requests
 from django.conf import settings
+from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -10,8 +11,15 @@ mux_token = settings.MUX_ACCESS_TOKEN
 mux_secret_key = settings.MUX_SECRET_KEY
 mux_auth = requests.auth.HTTPBasicAuth(mux_token, mux_secret_key)
 
-class Show(APIView):
+class ShowView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
+
+    def get(self, request):
+        if not request.user.is_authenticated:
+            shows = Show.objects.all().values('id', 'title').order_by('-created_at')
+        else:
+            shows = Show.objects.filter(owner=request.user).values('id', 'title', 'playback_id', 'stream_key').order_by('-created_at')
+        return JsonResponse(list(shows), safe=False)
 
     def post(self, request):
         if request.user.show.count() >= 3:

@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import Show
+from .views import ShowView
 
 urlpatterns = [
-    path('', Show.as_view()),
-    path('<int:id>', Show.as_view())
+    path('', ShowView.as_view()),
+    path('<int:id>', ShowView.as_view())
 ]

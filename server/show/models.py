@@ -8,6 +8,7 @@ class Show(models.Model):
     product_url = models.URLField(max_length=1024, blank=False)
     product_price = models.IntegerField(blank=False)
     product_description = models.TextField(max_length=1024, blank=False)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     stream_id = models.CharField(max_length=128, blank=False)
     playback_id = models.CharField(max_length=128, blank=False)
