@@ -38,7 +38,7 @@ class Account extends Component {
         }
         return true
     }
-    submit() {
+    async submit() {
         if (this.state.isSubmit)
             return
 
@@ -89,14 +89,35 @@ class Account extends Component {
             }
             if (!this.isStrongPassword(password))
                 return
+
+            const req = await fetch('/api/auth/register', 
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email.value,
+                        username: username.value,
+                        password: password.value
+                    })
+                }
+            )
+            const res = await req.json()
+            console.log(this.props.history.push('/dashboard'));
+            if (req.status == 200) {
+                window.localStorage.setItem('token', res['token'])
+                
+            } else {
+                this.setState({
+                    error: !res.detail ? res.message[Object.keys(res.message)[0]][0] : res.detail
+                })
+            }
         }
 
-        setTimeout(() => {
-            this.setState({
-                isSubmit: false,
-                success: "This website is only a template!"
-            })
-        }, 1000)
+        this.setState({
+            isSubmit: false
+        })
     }
     setInvalid(msg, elems) {
         this.setState({ 

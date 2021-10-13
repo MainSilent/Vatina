@@ -111,8 +111,8 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.ScopedRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'login': '20/hour',
-        'register': '2/hour',
+        'login': '60/hour',
+        'register': '40/hour',
         'show': '50/minute'
     }
 }
