@@ -20,6 +20,10 @@ class Dashboard extends Component {
         this.context.changeToken('')
         this.props.history.push('/login')
     }
+    componentDidMount() {
+        !this.context.token &&
+            this.props.history.push('/login')
+    }
     render() {
         return (
             <div className="dashboard">

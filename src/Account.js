@@ -172,6 +172,10 @@ class Account extends Component {
         document.querySelector('.submit').classList.add('error')
         elems.forEach(elem => elem && elem.classList.add('invalid'))
     }
+    componentDidMount() {
+        this.context.token &&
+            this.props.history.push('/dashboard')
+    }
     componentDidUpdate() {
         if (this.state.path !== window.location.pathname) {
             if (this.state.isSubmit)
