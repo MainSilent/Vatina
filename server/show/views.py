@@ -15,24 +15,25 @@ class ShowView(APIView):
     throttle_scope = 'show'
     permission_classes = (IsAuthenticatedOrReadOnly, )
 
-    def get(self, request):
-        if not request.user.is_authenticated:
-            shows = Show.objects.all().values('id', 'title').order_by('-created_at')
+    def get(self, request, id=None):
+        if id == None:
+            if not request.user.is_authenticated:
+                shows = Show.objects.all().values('id', 'title').order_by('-created_at')
+            else:
+                shows = Show.objects.filter(owner=request.user).values('id', 'title', 'playback_id', 'stream_key').order_by('-created_at')
+            return JsonResponse(list(shows), safe=False)
         else:
-            shows = Show.objects.filter(owner=request.user).values('id', 'title', 'playback_id', 'stream_key').order_by('-created_at')
-        return JsonResponse(list(shows), safe=False)
+            show = Show.objects.filter(id=id)
+            if len(show) == 0:
+                return Response({'message': { "show": "Failed to find the show" }}, status=404)
+            show = show.values()[0]
 
-    def get(self, request, id):
-        show = Show.objects.filter(id=id).values()[0]
-        if show is None:
-            return Response({'message': { "show": "Failed to find the show" }}, status=404)
-
-        if not request.user.is_authenticated or show['owner_id'] != request.user.id:
-            del show['owner_id']
-            del show['stream_id']
-            del show['stream_key']
-            
-        return JsonResponse(show)
+            if not request.user.is_authenticated or show['owner_id'] != request.user.id:
+                del show['owner_id']
+                del show['stream_id']
+                del show['stream_key']
+                
+            return JsonResponse(show)
 
     def post(self, request):
         if request.user.show.count() >= 3:
