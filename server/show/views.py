@@ -21,6 +21,18 @@ class ShowView(APIView):
             shows = Show.objects.filter(owner=request.user).values('id', 'title', 'playback_id', 'stream_key').order_by('-created_at')
         return JsonResponse(list(shows), safe=False)
 
+    def get(self, request, id):
+        show = Show.objects.filter(id=id).values()[0]
+        if show is None:
+            return Response({'message': { "show": "Failed to find the show" }}, status=404)
+
+        if not request.user.is_authenticated or show['owner_id'] != request.user.id:
+            del show['owner_id']
+            del show['stream_id']
+            del show['stream_key']
+            
+        return JsonResponse(show)
+
     def post(self, request):
         if request.user.show.count() >= 3:
             return Response({'message': { "show": "You can not have more than 3 shows" }}, status=400)
