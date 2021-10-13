@@ -24,7 +24,12 @@ class App extends Component {
     }
     changeToken(token) {
         this.state.token !== token &&
-            this.setState({ token: token })
+            this.setState({ token: token }, () => {
+                if (!token)
+                    window.localStorage.removeItem('token')
+                else
+                    window.localStorage.setItem('token', token)
+            })
     }
     render() {
         return (

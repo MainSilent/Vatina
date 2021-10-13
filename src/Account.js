@@ -82,6 +82,7 @@ class Account extends Component {
 
             if (req.status === 200) {
                 window.localStorage.setItem('token', res['token'])
+                this.context.changeToken(res['token'])
                 this.props.history.push('/dashboard')
             } else {
                 this.setState({
@@ -131,6 +132,7 @@ class Account extends Component {
 
             if (req.status === 200) {
                 window.localStorage.setItem('token', res['token'])
+                this.context.changeToken(res['token'])
                 this.props.history.push('/dashboard')
             } else {
                 this.setState({

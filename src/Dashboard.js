@@ -4,11 +4,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog } from '@fortawesome/fontawesome-free-solid'
 import { faSignOutAlt, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { Route, Redirect } from "react-router-dom"
+import AuthContext from './AuthContext'
 import AddShow from './dashboard/add-show'
 import Settings from './dashboard/settings'
 import './scss/dashboard.scss'
 
 class Dashboard extends Component {
+    async Logout() {
+        await fetch('/api/auth/logout', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Token ' + this.context.token
+            }
+        })
+        this.context.changeToken('')
+        this.props.history.push('/login')
+    }
     render() {
         return (
             <div className="dashboard">
@@ -22,7 +33,7 @@ class Dashboard extends Component {
 
                     <div className="actions">
                         <Link to={process.env.PUBLIC_URL+"/dashboard/settings"} className="settings"><FontAwesomeIcon icon={faCog} /> Settings</Link>
-                        <Link to={process.env.PUBLIC_URL+"/dashboard/logout"} className="logout"><FontAwesomeIcon icon={faSignOutAlt} /> Logout</Link>
+                        <a className="logout" onClick={() => this.Logout()}><FontAwesomeIcon icon={faSignOutAlt} /> Logout</a>
                     </div>
                 </div>
 
@@ -37,5 +48,7 @@ class Dashboard extends Component {
         )
     }
 }
+
+Dashboard.contextType = AuthContext
 
 export default Dashboard
