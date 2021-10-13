@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 
 class Show(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=128, blank=False)
     product_name = models.CharField(max_length=128, blank=False)
     product_url = models.URLField(max_length=1024, blank=False)
@@ -12,4 +13,4 @@ class Show(models.Model):
     playback_id = models.CharField(max_length=128, blank=False)
     stream_key = models.CharField(max_length=128, blank=False)
 
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="shows", blank=False, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="show", blank=False, on_delete=models.CASCADE)

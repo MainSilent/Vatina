@@ -14,6 +14,9 @@ class Show(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
 
     def post(self, request):
+        if request.user.show.count() >= 3:
+            return Response({'message': { "show": "You can't have more than 3 shows" }}, status=400)
+
         data = { **request.data, 'owner': request.user.id }
         mux_create_payload = {
             "playback_policy": [
@@ -38,8 +41,18 @@ class Show(APIView):
         if show_serializer.is_valid():
             show = show_serializer.save()
             return Response({
+                'id': show.id,
                 'playback_id': show.playback_id,
                 'stream_key': show.stream_key
             })
 
         return Response({'message': show_serializer.errors}, status=400)
+
+    def delete(self, request, id):
+        user = request.user
+        show = user.show.filter(id=id).first()
+        if show == None:
+            return Response({'message': { "show": "Failed to find the live stream" }}, status=404)
+        
+        show.delete()
+        return Response(status=204)
