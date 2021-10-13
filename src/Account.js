@@ -64,6 +64,29 @@ class Account extends Component {
                 this.setInvalid('Invalid email format', [email])
                 return
             }
+
+            const req = await fetch('/api/auth/login', 
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email.value,
+                        password: password.value
+                    })
+                }
+            )
+            const res = await req.json()
+
+            if (req.status == 200) {
+                window.localStorage.setItem('token', res['token'])
+                this.props.history.push('/dashboard')
+            } else {
+                this.setState({
+                    error: !res.detail ? res.message[Object.keys(res.message)[0]][0] : res.detail
+                })
+            }
         }
         else if (this.state.path === process.env.PUBLIC_URL+'/register') {
             if (!email.value || !username.value || !password.value || !re_password.value) {
@@ -104,10 +127,10 @@ class Account extends Component {
                 }
             )
             const res = await req.json()
-            console.log(this.props.history.push('/dashboard'));
+
             if (req.status == 200) {
                 window.localStorage.setItem('token', res['token'])
-                
+                this.props.history.push('/dashboard')
             } else {
                 this.setState({
                     error: !res.detail ? res.message[Object.keys(res.message)[0]][0] : res.detail
