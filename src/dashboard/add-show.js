@@ -1,9 +1,65 @@
 import React, { Component } from 'react'
+import AuthContext from '../AuthContext'
 
 class AddShow extends Component {
+    constructor() {
+        super()
+        this.state = {
+            isSubmit: false,
+            error: '',
+            msg: ''
+        }
+        this.submit = this.submit.bind(this)
+    }
+    async submit(e) {
+        if (this.state.isLoading) return
+        this.setState({ error: '', msg: '', isLoading: true })
+        e.preventDefault()
+
+        try {
+            const req = await fetch("/api/show/", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + this.context.token
+                },
+                body: JSON.stringify({
+                    title: e.target['title'].value,
+                    product_name: e.target['product-name'].value,
+                    product_url: e.target['product-url'].value,
+                    product_price: e.target['product-price'].value,
+                    product_description: e.target['product-description'].value
+                })
+            })
+    
+            const res = await req.json()
+
+            if (req.status === 200) {
+                this.setState({
+                    isSubmit: false
+                })
+                // this.state.history.push('/dashboard/show/'+res)
+            } else {
+                this.setState({
+                    isSubmit: false,
+                    error: !res.detail ? `${Object.keys(res.message)[0].capitalizeTxt().replace('_', ' ')} Error: ${res.message[Object.keys(res.message)[0]][0]}` : res.detail
+                })
+            }
+        }
+        catch (e) {
+            console.log(e)
+            this.setState({
+                isSubmit: false,
+                error: 'Network Error'
+            })
+        }
+    }
     render() {
         return (
             <div className="add-show">
+                {this.state.error && <div className="alert" style={{ color: 'red' }}>{this.state.error}</div>}
+                {this.state.msg && <div className="alert" style={{ color: 'black' }}>{this.state.msg}</div>}
+
                 <form className="add-form">
                     <input type="text" name="title" placeholder="Title"/>
                     <input type="text" name="product-name" placeholder="Product Name"/>
@@ -16,5 +72,7 @@ class AddShow extends Component {
         )
     }
 }
+
+AddShow.contextType = AuthContext
 
 export default AddShow

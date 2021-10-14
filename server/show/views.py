@@ -25,7 +25,7 @@ class ShowView(APIView):
         else:
             show = Show.objects.filter(id=id)
             if len(show) == 0:
-                return Response({'message': { "show": "Failed to find the show" }}, status=404)
+                return Response({'detail': "Failed to find the show"}, status=404)
             show = show.values()[0]
 
             if not request.user.is_authenticated or show['owner_id'] != request.user.id:
@@ -37,7 +37,7 @@ class ShowView(APIView):
 
     def post(self, request):
         if request.user.show.count() >= 3:
-            return Response({'message': { "show": "You can not have more than 3 shows" }}, status=400)
+            return Response({'detail': "You can not have more than 3 shows"}, status=400)
 
         data = { **request.data, 'owner': request.user.id }
         mux_create_payload = {
@@ -74,7 +74,7 @@ class ShowView(APIView):
         user = request.user
         show = user.show.filter(id=id).first()
         if show == None:
-            return Response({'message': { "show": "Failed to find the live stream" }}, status=404)
+            return Response({'detail': "Failed to find the live stream" }, status=404)
 
         requests.delete(f"https://api.mux.com/video/v1/live-streams/{show.stream_id}", auth=mux_auth)
 
