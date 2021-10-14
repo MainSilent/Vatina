@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink as Link } from "react-router-dom"
 
 class ShowDetails extends Component {
     constructor() {
@@ -25,11 +26,10 @@ class ShowDetails extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="show-details">
                 <p>Stream Key: {this.state.show.stream_key}</p>
                 <p>RTMP Server URL: rtmps://global-live.mux.com:443/app</p>
-                <hr/>
-                <p>Show Link: <a href={`/show/${this.state.show.playback_id}`}>{window.location.origin}/show/{this.state.show.playback_id}</a></p>
+                <p>Show Link: <Link to={`/show/${this.state.show.playback_id}`}>{window.location.origin}/show/{this.state.show.playback_id}</Link></p>
             </div>
         )
     }
