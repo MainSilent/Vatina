@@ -6,10 +6,18 @@ import { faSignOutAlt, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { Route, Redirect } from "react-router-dom"
 import AuthContext from './AuthContext'
 import AddShow from './dashboard/add-show'
+import ShowDetails from './dashboard/show-details'
 import Settings from './dashboard/settings'
 import './scss/dashboard.scss'
 
 class Dashboard extends Component {
+    constructor() {
+        super()
+        this.state = {
+            ShowsList: []
+        }
+        this.fetchShows = this.fetchShows.bind(this)
+    }
     async Logout() {
         await fetch('/api/auth/logout', {
             method: 'POST',
@@ -21,7 +29,19 @@ class Dashboard extends Component {
         this.context.changeUserID('')
         this.props.history.push('/login')
     }
-    componentDidMount() {
+    async fetchShows() {
+        await fetch('/api/show/', {
+            headers: {
+                Authorization: 'Token ' + this.context.token
+            }
+        })
+        .then(res => res.json())
+        .then(res => this.setState({ ShowsList: res }))
+    }
+    async componentDidMount() {
+        console.log(this.state.ShowsList);
+        await this.fetchShows()
+
         !this.context.token &&
             this.props.history.push('/login')
     }
@@ -30,9 +50,9 @@ class Dashboard extends Component {
             <div className="dashboard">
                 <div className="navbar">
                     <div className="show-list">
-                        <a href="#test">Adobe</a>
-                        <a href="#test">Google</a>
-                        <a href="#test">Microsoft</a>
+                        {this.state.ShowsList.map((show, i) => 
+                            <Link key={i} to={process.env.PUBLIC_URL+"/dashboard/show/"+show.playback_id}>{show.title}</Link>
+                        )}
                         <Link to={process.env.PUBLIC_URL+"/dashboard/addshow"} className="add-show"><FontAwesomeIcon icon={faPlus} /> Add Show</Link>
                     </div>
 
@@ -47,7 +67,8 @@ class Dashboard extends Component {
                     <Route path={process.env.PUBLIC_URL+"/dashboard/"} exact>
                         <Redirect to={process.env.PUBLIC_URL+"/dashboard/addshow"} />
                     </Route>
-                    <Route path={[process.env.PUBLIC_URL+"/dashboard/addshow", process.env.PUBLIC_URL+"/dashboard/"]} component={AddShow} exact/>
+                    <Route path={[process.env.PUBLIC_URL+"/dashboard/addshow", process.env.PUBLIC_URL+"/dashboard/"]} exact><AddShow { ...this.props } fetchShows={this.fetchShows}/></Route>
+                    <Route path={process.env.PUBLIC_URL+"/dashboard/show"}><ShowDetails { ...this.props } ShowsList={this.state.ShowsList}/></Route>
                     <Route path={process.env.PUBLIC_URL+"/dashboard/settings"} component={Settings} exact/>
                 </div>
             </div>

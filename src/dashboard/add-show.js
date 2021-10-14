@@ -12,9 +12,9 @@ class AddShow extends Component {
         this.submit = this.submit.bind(this)
     }
     async submit(e) {
-        if (this.state.isLoading) return
-        this.setState({ error: '', msg: '', isLoading: true })
         e.preventDefault()
+        if (this.state.isSubmit) return
+        this.setState({ error: '', msg: '', isLoading: true })
 
         try {
             const req = await fetch("/api/show/", {
@@ -33,12 +33,12 @@ class AddShow extends Component {
             })
     
             const res = await req.json()
-
             if (req.status === 200) {
                 this.setState({
                     isSubmit: false
                 })
-                // this.state.history.push('/dashboard/show/'+res)
+                await this.props.fetchShows()
+                this.props.history.push('/dashboard/show/'+res.playback_id)
             } else {
                 this.setState({
                     isSubmit: false,
@@ -60,7 +60,7 @@ class AddShow extends Component {
                 {this.state.error && <div className="alert" style={{ color: 'red' }}>{this.state.error}</div>}
                 {this.state.msg && <div className="alert" style={{ color: 'black' }}>{this.state.msg}</div>}
 
-                <form className="add-form">
+                <form className="add-form" onSubmit={this.submit}>
                     <input type="text" name="title" placeholder="Title"/>
                     <input type="text" name="product-name" placeholder="Product Name"/>
                     <input type="text" name="product-url" placeholder="Product Url"/>
