@@ -80,7 +80,11 @@ class Settings extends Component {
                     this.loadProfile()
                 }
                 else {
-                    this.setState({ error: 'Something went wrong, Try again later', msg: '' })
+                    const res = await req.json()
+                    this.setState({
+                        error: !res.error ? `${Object.keys(res.message)[0].capitalizeTxt()} Error: ${res.message[Object.keys(res.message)[0]][0]}` : res.error,
+                        msg: ''
+                    })
                 }
             })
         }
