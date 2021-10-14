@@ -57,13 +57,13 @@
                 }
             }
     
-            input, textarea {
+            input, textarea, button[type="submit"] {
                 width: 300px;
                 padding: 8px 0;
                 font-size: 12px;
             }
     
-            input[type="submit"] {
+            button[type="submit"] {
                 margin-top: 10px;
                 font-size: 14px;
             }
@@ -76,6 +76,22 @@
                 p {
                     font-size: 14px;
                 }
+            }
+
+            .loader {
+                width: 17px;
+                height: 17px;
+                border: 1.5px solid black;
+                border-radius: 50%;
+                border-right-color: transparent;
+                border-bottom-color: transparent;
+                transition: all 0.5s ease-in;
+                animation: submit_spin 1s linear infinite;
+            }
+    
+            @keyframes submit_spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
             }
         }
     }
@@ -164,12 +180,12 @@
                 }
             }
     
-            input, textarea {
+            input, textarea, button[type="submit"] {
                 border-radius: 0;
                 font-size: 14px;
             }
 
-            input[type="submit"] {
+            button[type="submit"] {
                 margin-top: 10px;
                 font-size: 16px;
             }

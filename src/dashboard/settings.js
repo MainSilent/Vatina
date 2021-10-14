@@ -5,6 +5,7 @@ class Settings extends Component {
     constructor() {
         super()
         this.state = {
+            isSubmit: false,
             error: '',
             msg: ''
         }
@@ -13,19 +14,22 @@ class Settings extends Component {
     }
     async changePassword(e) {
         e.preventDefault()
-        this.setState({ error: '', msg: '' })
+        if (this.state.isSubmit) return
+        this.setState({ error: '', msg: '', isSubmit: true })
 
         const password = e.target.elements['password'].value
         const re_password = e.target.elements['re-password'].value
 
         if (!password || !re_password) {
             this.setState({
+                isSubmit: false,
                 error: 'Please fill out all required fields'
             })
             return
         }
         else if (password !== re_password) {
             this.setState({
+                isSubmit: false,
                 error: 'Password does not match'
             })
             return
@@ -46,9 +50,13 @@ class Settings extends Component {
             if (req.status === 204) {
                 this.context.changeToken('')
                 this.props.history.push('/login')
+                this.setState({
+                    isSubmit: false
+                })
             } else {
                 const res = await req.json()
                 this.setState({
+                    isSubmit: false,
                     error: !res.detail ? `${Object.keys(res.message)[0].capitalizeTxt()} Error: ${res.message[Object.keys(res.message)[0]][0]}` : res.detail
                 })
             }
@@ -56,6 +64,7 @@ class Settings extends Component {
         catch (e) {
             console.log(e)
             this.setState({
+                isSubmit: false,
                 error: 'Network Error'
             })
         }
@@ -121,7 +130,7 @@ class Settings extends Component {
                 <form className="password" onSubmit={this.changePassword}>
                     <input type="password" name="password" placeholder="Password"/>
                     <input type="password" name="re-password" placeholder="Re-enter Password"/>
-                    <input type="submit" value="Change"/>
+                    <button type="submit">{this.state.isSubmit ? <div className="loader"></div> : 'Change'}</button>
                 </form>
             </div>
         )

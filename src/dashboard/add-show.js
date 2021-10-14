@@ -14,7 +14,7 @@ class AddShow extends Component {
     async submit(e) {
         e.preventDefault()
         if (this.state.isSubmit) return
-        this.setState({ error: '', msg: '', isLoading: true })
+        this.setState({ error: '', msg: '', isSubmit: true })
 
         try {
             const req = await fetch("/api/show/", {
@@ -34,10 +34,10 @@ class AddShow extends Component {
     
             const res = await req.json()
             if (req.status === 200) {
+                await this.props.fetchShows()
                 this.setState({
                     isSubmit: false
                 })
-                await this.props.fetchShows()
                 this.props.history.push('/dashboard/show/'+res.playback_id)
             } else {
                 this.setState({
@@ -66,7 +66,7 @@ class AddShow extends Component {
                     <input type="text" name="product-url" placeholder="Product Url"/>
                     <input type="number" name="product-price" placeholder="Product $Price" onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}/>
                     <textarea name="product-description" placeholder="Product Description" rows="10"></textarea>
-                    <input type="submit" value="Add"/>
+                    <button type="submit">{this.state.isSubmit ? <div className="loader"></div> : 'Add'}</button>
                 </form>
             </div>
         )
