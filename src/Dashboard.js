@@ -17,6 +17,7 @@ class Dashboard extends Component {
             ShowsList: []
         }
         this.fetchShows = this.fetchShows.bind(this)
+        this.deleteShow = this.deleteShow.bind(this)
     }
     async Logout() {
         await fetch('/api/auth/logout', {
@@ -39,11 +40,19 @@ class Dashboard extends Component {
         .then(res => this.setState({ ShowsList: res }))
     }
     async componentDidMount() {
-        console.log(this.state.ShowsList);
         await this.fetchShows()
 
         !this.context.token &&
             this.props.history.push('/login')
+    }
+    async deleteShow(id) {
+        await fetch('/api/show/'+id, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': 'Token ' + this.context.token
+            }
+        })
+        await this.fetchShows()
     }
     render() {
         return (
@@ -68,7 +77,7 @@ class Dashboard extends Component {
                         <Redirect to={process.env.PUBLIC_URL+"/dashboard/addshow"} />
                     </Route>
                     <Route path={[process.env.PUBLIC_URL+"/dashboard/addshow", process.env.PUBLIC_URL+"/dashboard/"]} exact><AddShow { ...this.props } fetchShows={this.fetchShows}/></Route>
-                    <Route path={process.env.PUBLIC_URL+"/dashboard/show"}><ShowDetails { ...this.props } ShowsList={this.state.ShowsList}/></Route>
+                    <Route path={process.env.PUBLIC_URL+"/dashboard/show"}><ShowDetails { ...this.props } ShowsList={this.state.ShowsList} deleteShow={this.deleteShow}/></Route>
                     <Route path={process.env.PUBLIC_URL+"/dashboard/settings"} component={Settings} exact/>
                 </div>
             </div>

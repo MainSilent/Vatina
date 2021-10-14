@@ -76,6 +76,10 @@
                 p {
                     font-size: 14px;
                 }
+
+                .delete-show {
+                    font-size: 14px;
+                }
             }
 
             .loader {
@@ -195,11 +199,15 @@
             }
 
             .show-details {
-                
                 p {
                     border-radius: 0.5vw;
                     font-size: 12px;
                     word-break: break-all;
+                }
+
+                .delete-show {
+                    font-size: 14px;
+                    border-radius: 0.5vw;
                 }
             }
         }
