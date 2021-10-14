@@ -89,17 +89,17 @@ class Show extends Component {
             })
         }
 
-        // if (document.documentElement.clientWidth <= 800)
-        //     this.setState({
-        //         showComments: false
-        //     })
+        if (document.documentElement.clientWidth <= 800)
+            this.setState({
+                showComments: false
+            })
         
         // this.checkScroll()
-        // this.generateComment()
+        this.generateComment()
     }
     componentDidUpdate() {
-        // this.state.showComments && !this.state.scrolled &&
-        //     this.checkScroll()
+        this.state.showComments && !this.state.scrolled &&
+            this.checkScroll()
     }
     render() {
         return (
