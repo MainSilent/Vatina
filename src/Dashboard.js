@@ -52,6 +52,7 @@ class Dashboard extends Component {
                 'Authorization': 'Token ' + this.context.token
             }
         })
+        this.props.history.push('/dashboard')
         await this.fetchShows()
     }
     render() {
