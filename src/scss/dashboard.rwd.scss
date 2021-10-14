@@ -48,6 +48,10 @@
                 .password {
                     gap: 8px;
                 }
+
+                .error {
+                    font-size: 13px;
+                }
             }
     
             .add-show {
@@ -141,6 +145,10 @@
     
                 .password {
                     gap: 10px;
+                }
+
+                .error {
+                    border-radius: 0.5vw;
                 }
             }
     

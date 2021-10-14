@@ -7,6 +7,7 @@ import Register from './account/register'
 import ResetPassword from './account/resetpassword'
 import './scss/account.scss'
 
+// eslint-disable-next-line no-extend-native
 String.prototype.capitalizeTxt = String.prototype.capitalizeTxt || function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }

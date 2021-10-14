@@ -47,7 +47,7 @@ class Logout(APIView):
 class ChangePassword(APIView):
     permission_classes = (IsAuthenticated, )
     
-    def post(self, request):
+    def put(self, request):
         new_password = request.data.get('new_password')
         UserSerializer.change_password(None, request.user, new_password)
         return Response(status=204)

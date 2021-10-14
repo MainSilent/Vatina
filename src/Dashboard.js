@@ -37,7 +37,8 @@ class Dashboard extends Component {
 
                     <div className="actions">
                         <Link to={process.env.PUBLIC_URL+"/dashboard/settings"} className="settings"><FontAwesomeIcon icon={faCog} /> Settings</Link>
-                        <a className="logout" onClick={() => this.Logout()}><FontAwesomeIcon icon={faSignOutAlt} /> Logout</a>
+                        {/* eslint-disable-next-line */}
+                        <a className="logout" href="#" onClick={() => this.Logout()}><FontAwesomeIcon icon={faSignOutAlt} /> Logout</a>
                     </div>
                 </div>
 
