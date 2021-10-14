@@ -23,7 +23,7 @@ class ShowView(APIView):
                 shows = Show.objects.filter(owner=request.user).values('id', 'title', 'playback_id', 'stream_key').order_by('-created_at')
             return JsonResponse(list(shows), safe=False)
         else:
-            show = Show.objects.filter(id=id)
+            show = Show.objects.filter(playback_id=id)
             if len(show) == 0:
                 return Response({'detail': "Failed to find the show"}, status=404)
             show = show.values()[0]

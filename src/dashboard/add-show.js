@@ -27,6 +27,7 @@ class AddShow extends Component {
                     title: e.target['title'].value,
                     product_name: e.target['product-name'].value,
                     product_url: e.target['product-url'].value,
+                    product_image_url: e.target['product-image-url'].value,
                     product_price: e.target['product-price'].value,
                     product_description: e.target['product-description'].value
                 })
@@ -64,6 +65,7 @@ class AddShow extends Component {
                     <input type="text" name="title" placeholder="Title"/>
                     <input type="text" name="product-name" placeholder="Product Name"/>
                     <input type="text" name="product-url" placeholder="Product Url"/>
+                    <input type="text" name="product-image-url" placeholder="Product Image Url"/>
                     <input type="number" name="product-price" placeholder="Product $Price" onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}/>
                     <textarea name="product-description" placeholder="Product Description" rows="10"></textarea>
                     <button type="submit">{this.state.isSubmit ? <div className="loader"></div> : 'Add'}</button>

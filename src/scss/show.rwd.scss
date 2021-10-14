@@ -119,6 +119,13 @@
             }
         }
     }
+
+    .show-loader-container {
+        .loader {
+            width: 60px;
+            height: 60px;
+        }
+    }
 }
 
 @media screen and (max-width: 800px) {

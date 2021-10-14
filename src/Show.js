@@ -9,12 +9,14 @@ class Show extends Component {
     constructor() {
         super()
         this.state = {
+            isLoading: true,
             scrolled: false,
             muted: true,
             showComments: true,
             users: ['Benjamin', 'James', 'Oliver', 'Patricia', 'Charles'],
             comment: '',
-            comments: []
+            comments: [],
+            show: {}
         }
         this.handleComment = this.handleComment.bind(this)
         this.addComment = this.addComment.bind(this)
@@ -71,21 +73,37 @@ class Show extends Component {
                     })
         })
     }
-    componentDidMount() {
-        if (document.documentElement.clientWidth <= 800)
+    async componentDidMount() {
+        // Get show data
+        const playback_id = this.props.location.pathname.split('/').pop()
+        const req = await fetch('/api/show/'+playback_id)
+        if (req.status === 200) {
+            const res = await req.json()
             this.setState({
-                showComments: false
+                show: res,
+                isLoading: false
             })
+        } else {
+            this.setState({
+                isLoading: false
+            })
+        }
+
+        // if (document.documentElement.clientWidth <= 800)
+        //     this.setState({
+        //         showComments: false
+        //     })
         
-        this.checkScroll()
-        this.generateComment()
+        // this.checkScroll()
+        // this.generateComment()
     }
     componentDidUpdate() {
-        this.state.showComments && !this.state.scrolled &&
-            this.checkScroll()
+        // this.state.showComments && !this.state.scrolled &&
+        //     this.checkScroll()
     }
     render() {
         return (
+            this.state.isLoading ? <div className="show-loader-container"><div className="loader"></div></div> :
             <div className="show-container">
                 <div className="host-container">
                     <img src={process.env.PUBLIC_URL+'/static/images/adobe.jpg'} alt="adobe logo"/>
