@@ -18,6 +18,7 @@ class Dashboard extends Component {
             }
         })
         this.context.changeToken('')
+        this.context.changeUserID('')
         this.props.history.push('/login')
     }
     componentDidMount() {

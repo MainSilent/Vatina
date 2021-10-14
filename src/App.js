@@ -18,9 +18,11 @@ class App extends Component {
     constructor() {
         super()
         this.state = {
+            userId: window.localStorage.getItem('userId'),
             token: window.localStorage.getItem('token')
         }
         this.changeToken = this.changeToken.bind(this)
+        this.changeUserID = this.changeUserID.bind(this)
     }
     changeToken(token) {
         this.state.token !== token &&
@@ -31,9 +33,18 @@ class App extends Component {
                     window.localStorage.setItem('token', token)
             })
     }
+    changeUserID(userId) {
+        this.state.userId !== userId &&
+            this.setState({ userId: userId }, () => {
+                if (!userId)
+                    window.localStorage.removeItem('userId')
+                else
+                    window.localStorage.setItem('userId', userId)
+            })
+    }
     render() {
         return (
-            <AuthContext.Provider value={{ token: this.state.token, changeToken: this.changeToken }}>
+            <AuthContext.Provider value={{ userId: this.state.userId, token: this.state.token, changeToken: this.changeToken, changeUserID: this.changeUserID }}>
                 <Router>
                     <Menu />
                     <Switch>

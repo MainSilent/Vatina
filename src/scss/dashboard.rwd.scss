@@ -48,10 +48,6 @@
                 .password {
                     gap: 8px;
                 }
-
-                .error {
-                    font-size: 13px;
-                }
             }
     
             .add-show {
@@ -69,6 +65,10 @@
             input[type="submit"] {
                 margin-top: 10px;
                 font-size: 14px;
+            }
+
+            .alert {
+                font-size: 13px;
             }
         }
     }
@@ -146,10 +146,6 @@
                 .password {
                     gap: 10px;
                 }
-
-                .error {
-                    border-radius: 0.5vw;
-                }
             }
     
             .add-show {
@@ -168,6 +164,10 @@
             input[type="submit"] {
                 margin-top: 10px;
                 font-size: 16px;
+            }
+
+            .alert {
+                border-radius: 0.5vw;
             }
         }
     }

@@ -17,7 +17,10 @@ class Register(APIView):
         if user_serializer.is_valid():
             user = user_serializer.save()
             token = Token.objects.create(user=user)
-            return Response({'token': token.key})
+            return Response({
+                'userId': user.id,
+                'token': token.key
+            })
 
         return Response({'message': user_serializer.errors}, status=400)
 
@@ -34,7 +37,10 @@ class Login(APIView):
         except:
             token = Token.objects.get(user=user)
             
-        return Response({'token': token.key})
+        return Response({
+            'userId': user.id,
+            'token': token.key
+        })
 
 class Logout(APIView):
     permission_classes = (IsAuthenticated, )
@@ -57,7 +63,10 @@ class UploadAvatar(APIView):
     
     def put(self, request):
         new_avatar = request.data.get('file')
-        avatar_ext = new_avatar.content_type.split('/')[-1]
+        try:
+            avatar_ext = new_avatar.content_type.split('/')[-1]
+        except Exception as e:
+            return Response(status=400)
         path = f"{settings.STATIC_URL}/{request.user.id}.png"
  
         if avatar_ext not in ['jpg', 'jpeg', 'png']:

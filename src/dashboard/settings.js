@@ -5,13 +5,15 @@ class Settings extends Component {
     constructor() {
         super()
         this.state = {
-            error: ''
+            error: '',
+            msg: ''
         }
         this.changePassword = this.changePassword.bind(this)
+        this.changePicture = this.changePicture.bind(this)
     }
     async changePassword(e) {
         e.preventDefault()
-        this.setState({ error: '' })
+        this.setState({ error: '', msg: '' })
 
         const password = e.target.elements['password'].value
         const re_password = e.target.elements['re-password'].value
@@ -58,13 +60,32 @@ class Settings extends Component {
             })
         }
     }
+    changePicture(e) {
+        this.setState({ error: '', msg: '' })
+        document.getElementById('picture').click()
+        document.getElementById('picture').onchange = e => {
+            this.setState({ msg: 'Uploading...' }, async () => {
+                const file = new FormData()
+                file.append('file', e.target.files[0])
+                const req = await fetch('/api/auth/upload_avatar', {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': 'Token ' + this.context.token
+                    },
+                    body: file
+                })
+            })
+        }
+    }
     render() {
         return (
             <div className="settings">
-                {this.state.error && <div className="error">{this.state.error}</div>}
+                {this.state.error && <div className="alert" style={{ color: 'red' }}>{this.state.error}</div>}
+                {this.state.msg && <div className="alert" style={{ color: 'black' }}>{this.state.msg}</div>}
 
-                <div className="picture">
+                <div className="picture" onClick={this.changePicture}>
                     <p>Change</p>
+                    <input type="file" id="picture" style={{ display: 'none' }}/>
                     <img src="/static/images/profile/James.jpeg" alt="Profile"/>
                 </div>
 

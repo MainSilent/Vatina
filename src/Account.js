@@ -87,7 +87,7 @@ class Account extends Component {
                 const res = await req.json()
 
                 if (req.status === 200) {
-                    window.localStorage.setItem('token', res['token'])
+                    this.context.changeUserID(res['userId'])
                     this.context.changeToken(res['token'])
                     this.props.history.push('/dashboard')
                 } else {
@@ -144,7 +144,7 @@ class Account extends Component {
                 const res = await req.json()
 
                 if (req.status === 200) {
-                    window.localStorage.setItem('token', res['token'])
+                    this.context.changeUserID(res['userId'])
                     this.context.changeToken(res['token'])
                     this.props.history.push('/dashboard')
                 } else {

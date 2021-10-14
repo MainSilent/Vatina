@@ -1,8 +1,10 @@
 import React from 'react'
 
 const AuthContext = React.createContext({
+    userId: 0,
     token: '',
-    changeToken: () => {}
+    changeToken: () => {},
+    changeUserID: () => {}
 })
 
 export default AuthContext
