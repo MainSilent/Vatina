@@ -86,7 +86,11 @@ class Settings extends Component {
         }
     }
     loadProfile() {
-        document.getElementById('profile-img').src = `/static/images/profile/${this.context.userId}.png?time=` + Date.now()
+        const img = document.getElementById('profile-img')
+        img.src = `/static/images/profile/${this.context.userId}.png?time=` + Date.now()
+        img.onerror = e => {
+            img.src = `/static/images/profile/Guest.png?time=` + Date.now()
+        }
     }
     componentDidMount() {
         this.loadProfile()
