@@ -80,11 +80,18 @@ class Settings extends Component {
                     this.loadProfile()
                 }
                 else {
-                    const res = await req.json()
-                    this.setState({
-                        error: !res.error ? `${Object.keys(res.message)[0].capitalizeTxt()} Error: ${res.message[Object.keys(res.message)[0]][0]}` : res.error,
-                        msg: ''
-                    })
+                    try {
+                        const res = await req.json()
+                        this.setState({
+                            error: !res.error ? `${Object.keys(res.message)[0].capitalizeTxt()} Error: ${res.message[Object.keys(res.message)[0]][0]}` : res.error,
+                            msg: ''
+                        })
+                    } catch(e) {
+                        this.setState({
+                            error: 'Something went wrong, Try again later',
+                            msg: ''
+                        })
+                    }
                 }
             })
         }
