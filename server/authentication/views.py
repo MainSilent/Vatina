@@ -67,7 +67,7 @@ class UploadAvatar(APIView):
             avatar_ext = new_avatar.content_type.split('/')[-1]
         except Exception as e:
             return Response(status=400)
-        path = f"{settings.STATIC_URL}/{request.user.id}.png"
+        path = f'{settings.MEDIA_ROOT}/images/profile/{request.user.id}.png'
  
         if avatar_ext not in ['jpg', 'jpeg', 'png']:
             return Response({'error': 'Your avatar should be png or jpeg'}, status=200)

@@ -74,8 +74,22 @@ class Settings extends Component {
                     },
                     body: file
                 })
+                
+                if (req.status === 204) {
+                    this.setState({ error: '', msg: '' })
+                    this.loadProfile()
+                }
+                else {
+                    this.setState({ error: 'Something went wrong, Try again later', msg: '' })
+                }
             })
         }
+    }
+    loadProfile() {
+        document.getElementById('profile-img').src = `/static/images/profile/${this.context.userId}.png?time=` + Date.now()
+    }
+    componentDidMount() {
+        this.loadProfile()
     }
     render() {
         return (
@@ -86,7 +100,7 @@ class Settings extends Component {
                 <div className="picture" onClick={this.changePicture}>
                     <p>Change</p>
                     <input type="file" id="picture" style={{ display: 'none' }}/>
-                    <img src="/static/images/profile/James.jpeg" alt="Profile"/>
+                    <img id='profile-img' alt="Profile"/>
                 </div>
 
                 <form className="password" onSubmit={this.changePassword}>
