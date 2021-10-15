@@ -100,6 +100,17 @@ class Show extends Component {
         // this.checkScroll()
         this.generateComment()
 
+        // Load profile picture
+        const profilePicture = document.querySelector('.profile-picture')
+        if (this.state.isLive) {
+            profilePicture.src = `/static/images/profile/${this.state.show.owner_id}.png?time=` + Date.now()
+            profilePicture.onerror = e => {
+                profilePicture.src = `/static/images/profile/Guest.png?time=` + Date.now()
+            }
+        } else {
+            profilePicture.src = process.env.PUBLIC_URL+'/static/images/adobe.jpg'
+        }
+
         // Load video
         if (this.state.isLive) {
             const video = document.getElementById('live-show')
@@ -126,7 +137,7 @@ class Show extends Component {
             this.state.isLoading ? <div className="show-loader-container"><div className="loader"></div></div> :
             <div className="show-container">
                 <div className="host-container">
-                    <img src={process.env.PUBLIC_URL+'/static/images/adobe.jpg'} alt="adobe logo"/>
+                    <img className="profile-picture" alt="logo"/>
                     <h1>{isLive ? show.username : 'Adobe'}<span><br/>Live show started: {isLive ? new Date(show.created_at).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' }) : '8:53 AM'}</span></h1>
                     <p className="views">83 <FontAwesomeIcon icon={faEye} /></p>
                 </div>
@@ -135,7 +146,7 @@ class Show extends Component {
 
                 <div className="product-container">
                     <div className="info">
-                        <p className="name"><img src={process.env.PUBLIC_URL+'/static/images/AdobeXD.png'} alt="Adobe XD" /> {isLive ? show.product_name : 'Adobe XD Beta'}</p>
+                        <p className="name"><img src={isLive ? show.product_image_url : process.env.PUBLIC_URL+'/static/images/AdobeXD.png'} alt="Adobe XD" /> {isLive ? show.product_name : 'Adobe XD Beta'}</p>
                         <p className="description">{isLive ? show.product_description : 'This product is a vector-based user experience design tool for web apps and mobile apps.'}</p>
                     </div>
                     <p className="price" price={`${isLive ? show.product_price : '299'}$`} onClick={() => window.open(isLive ? show.product_url : 'https://www.adobe.com/products/xd.html', '_blank')}></p>
