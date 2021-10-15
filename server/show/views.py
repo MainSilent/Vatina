@@ -26,14 +26,14 @@ class ShowView(APIView):
             show = Show.objects.filter(playback_id=id)
             if len(show) == 0:
                 return Response({'detail': "Failed to find the show"}, status=404)
+            owner = show.first().owner
             show = show.values()[0]
 
             if not request.user.is_authenticated or show['owner_id'] != request.user.id:
-                del show['owner_id']
                 del show['stream_id']
                 del show['stream_key']
                 
-            return JsonResponse(show)
+            return JsonResponse({ **show, 'username': owner.username })
 
     def post(self, request):
         if request.user.show.count() >= 3:

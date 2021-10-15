@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faVolumeUp, faComment } from '@fortawesome/fontawesome-free-solid'
 import { faVolumeMute, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import randomComments from './random_comments.json'
+import Hls from 'hls.js'
 import './scss/show.scss'
 
 class Show extends Component {
     constructor() {
         super()
         this.state = {
+            isLive: false,
             isLoading: true,
             scrolled: false,
             muted: true,
@@ -81,6 +83,7 @@ class Show extends Component {
             const res = await req.json()
             this.setState({
                 show: res,
+                isLive: true,
                 isLoading: false
             })
         } else {
@@ -96,12 +99,29 @@ class Show extends Component {
         
         // this.checkScroll()
         this.generateComment()
+
+        // Load video
+        if (this.state.isLive) {
+            const video = document.getElementById('live-show')
+            const src = `https://stream.mux.com/${this.state.show.playback_id}.m3u8`
+
+            if (Hls.isSupported()) {
+                const hls = new Hls()
+                hls.loadSource(src)
+                hls.attachMedia(video)
+            } else {
+                console.error("This is a legacy browser that doesn't support MSE")
+            }
+        }
     }
     componentDidUpdate() {
         this.state.showComments && !this.state.scrolled &&
             this.checkScroll()
     }
     render() {
+        const show = this.state.show
+        const isLive = this.state.isLive
+        
         return (
             this.state.isLoading ? <div className="show-loader-container"><div className="loader"></div></div> :
             <div className="show-container">
@@ -149,7 +169,7 @@ class Show extends Component {
                 </div>
 
                 <div className="video-container">
-                    <video autoPlay muted={this.state.muted}>
+                    <video autoPlay muted={this.state.muted} id="live-show">
                         <source src={process.env.PUBLIC_URL+"/static/AdobeXD.webm"} type="video/webm" width="100%" height="auto"/>
                     </video>
                     <span className="mute" onClick={() => this.setState({ muted: !this.state.muted })}><FontAwesomeIcon icon={this.state.muted ? faVolumeMute : faVolumeUp} /></span>
