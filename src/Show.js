@@ -127,7 +127,7 @@ class Show extends Component {
             <div className="show-container">
                 <div className="host-container">
                     <img src={process.env.PUBLIC_URL+'/static/images/adobe.jpg'} alt="adobe logo"/>
-                    <h1>{isLive ? show.username : 'Adobe'}<span><br/>Live show started: {isLive ? new Date(show.created_at).toLocaleTimeString() : '8:53 AM'}</span></h1>
+                    <h1>{isLive ? show.username : 'Adobe'}<span><br/>Live show started: {isLive ? new Date(show.created_at).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' }) : '8:53 AM'}</span></h1>
                     <p className="views">83 <FontAwesomeIcon icon={faEye} /></p>
                 </div>
 
@@ -138,7 +138,7 @@ class Show extends Component {
                         <p className="name"><img src={process.env.PUBLIC_URL+'/static/images/AdobeXD.png'} alt="Adobe XD" /> {isLive ? show.product_name : 'Adobe XD Beta'}</p>
                         <p className="description">{isLive ? show.product_description : 'This product is a vector-based user experience design tool for web apps and mobile apps.'}</p>
                     </div>
-                    <p className="price" onClick={() => window.open('https://www.adobe.com/products/xd.html', '_blank')}></p>
+                    <p className="price" onClick={() => window.open(isLive ? show.product_url : 'https://www.adobe.com/products/xd.html', '_blank')}></p>
                 </div>
 
                 <div className="comments-container">
