@@ -146,7 +146,7 @@ class Show extends Component {
 
                 <div className="product-container">
                     <div className="info">
-                        <p className="name"><img src={isLive ? show.product_image_url : process.env.PUBLIC_URL+'/static/images/AdobeXD.png'} alt="Adobe XD" /> {isLive ? show.product_name : 'Adobe XD Beta'}</p>
+                        <p className="name"><img src={isLive ? show.product_image_url : process.env.PUBLIC_URL+'/static/images/AdobeXD.png'} alt="Adobe XD" onError={(e) => e.target.style.display = "none"}/> {isLive ? show.product_name : 'Adobe XD Beta'}</p>
                         <p className="description">{isLive ? show.product_description : 'This product is a vector-based user experience design tool for web apps and mobile apps.'}</p>
                     </div>
                     <p className="price" price={`${isLive ? show.product_price : '299'}$`} onClick={() => window.open(isLive ? show.product_url : 'https://www.adobe.com/products/xd.html', '_blank')}></p>
