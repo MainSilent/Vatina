@@ -94,7 +94,7 @@
             }
 
             &:after {
-                content: "299$";
+                content: attr(price);
             }
 
             &:hover:after {
