@@ -31,13 +31,14 @@ class Dashboard extends Component {
         this.props.history.push('/login')
     }
     async fetchShows() {
-        await fetch('/api/show/', {
+        const req = await fetch('/api/show/', {
             headers: {
                 Authorization: 'Token ' + this.context.token
             }
         })
-        .then(res => res.json())
-        .then(res => this.setState({ ShowsList: res }))
+        const res = await req.json()
+        req.status === 200 &&
+            this.setState({ ShowsList: res })
     }
     async componentDidMount() {
         await this.fetchShows()

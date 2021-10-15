@@ -43,7 +43,7 @@ class AddShow extends Component {
             } else {
                 this.setState({
                     isSubmit: false,
-                    error: !res.detail ? `${Object.keys(res.message)[0].capitalizeTxt().replace('_', ' ')} Error: ${res.message[Object.keys(res.message)[0]][0]}` : res.detail
+                    error: !res.detail ? `${Object.keys(res.message)[0].capitalizeTxt().replace(/_/g, ' ')} Error: ${res.message[Object.keys(res.message)[0]][0]}` : res.detail
                 })
             }
         }
