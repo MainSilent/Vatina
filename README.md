@@ -2,33 +2,15 @@
 
 Introduce The Future & Increase Your Product Sales
 
-[Demo](https://www.youtube.com/watch?v=jae2cdyipHM)
-
-## Note
-
 This web app was created as the final harvard CS50 project
+
+[Demo](https://www.youtube.com/watch?v=jae2cdyipHM)
 
 ## Distinctiveness and Complexity
 
 This project allows people to create shows and introduce their products via a live demonstration.
 
 The Requirements has been demonstrated in video, It is completely mobile responsive and uses django rest framework as the API that it has at least one model(Show), And for the javascript this project has been made with React...
-
-## File structure
-
-Since there are so many files, I will only describe the directories
-
-### src:
-
-All the react codes
-
-### public:
-
-React uses this directory as public path
-
-### server:
-
-This includes the django backend files
 
 ## How to run
 
