@@ -114,6 +114,8 @@
                 display: block;
                 transition: 0.3s;
                 cursor: default;
+                white-space: nowrap;
+                overflow: hidden;
             }
 
             .closebtn {
