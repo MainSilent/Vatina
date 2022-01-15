@@ -34,5 +34,3 @@ npm start
 ## Additional Details
 
 The comment section and shows list in home menu is just a demo, It is not connected to the backend
-
-Since I spent lots of time on this project, You will also receive GPL license, That means if you use this project you have to make the source code public.
