@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Vatina/static/css/main.82b21a49.chunk.css",
+    "main.css": "/Vatina/static/css/main.989238f3.chunk.css",
     "main.js": "/Vatina/static/js/main.1bf4c7d6.chunk.js",
     "main.js.map": "/Vatina/static/js/main.1bf4c7d6.chunk.js.map",
     "runtime-main.js": "/Vatina/static/js/runtime-main.bd5d5184.js",
@@ -8,13 +8,13 @@
     "static/js/2.a37d533c.chunk.js": "/Vatina/static/js/2.a37d533c.chunk.js",
     "static/js/2.a37d533c.chunk.js.map": "/Vatina/static/js/2.a37d533c.chunk.js.map",
     "index.html": "/Vatina/index.html",
-    "static/css/main.82b21a49.chunk.css.map": "/Vatina/static/css/main.82b21a49.chunk.css.map",
+    "static/css/main.989238f3.chunk.css.map": "/Vatina/static/css/main.989238f3.chunk.css.map",
     "static/js/2.a37d533c.chunk.js.LICENSE.txt": "/Vatina/static/js/2.a37d533c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.bd5d5184.js",
     "static/js/2.a37d533c.chunk.js",
-    "static/css/main.82b21a49.chunk.css",
+    "static/css/main.989238f3.chunk.css",
     "static/js/main.1bf4c7d6.chunk.js"
   ]
 }
